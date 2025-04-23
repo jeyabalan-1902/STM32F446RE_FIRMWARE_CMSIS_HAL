@@ -39,7 +39,7 @@ int main(void)
 	uart_set_baudrate(USART2, APB1_CLK, UART_BAUDRATE);
 
 	/*configure the transfer direction like rx or tx*/
-	USART2->CR1 = CR1_TE;
+	USART2->CR1 |= CR1_TE;
 
 	/*enabling the uart module*/
 	USART2->CR1 |= CR1_UE;

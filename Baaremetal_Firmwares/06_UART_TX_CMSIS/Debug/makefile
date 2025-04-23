@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 05_GPIO_INPUT_CMSIS
+BUILD_ARTIFACT_NAME := 06_UART_TX_CMSIS
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-05_GPIO_INPUT_CMSIS.elf \
+06_UART_TX_CMSIS.elf \
 
 MAP_FILES += \
-05_GPIO_INPUT_CMSIS.map \
+06_UART_TX_CMSIS.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-05_GPIO_INPUT_CMSIS.list \
+06_UART_TX_CMSIS.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 05_GPIO_INPUT_CMSIS.elf secondary-outputs
+main-build: 06_UART_TX_CMSIS.elf secondary-outputs
 
 # Tool invocations
-05_GPIO_INPUT_CMSIS.elf 05_GPIO_INPUT_CMSIS.map: $(OBJS) $(USER_OBJS) C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\05_GPIO_INPUT_CMSIS\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "05_GPIO_INPUT_CMSIS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\05_GPIO_INPUT_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="05_GPIO_INPUT_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+06_UART_TX_CMSIS.elf 06_UART_TX_CMSIS.map: $(OBJS) $(USER_OBJS) C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\06_UART_TX_CMSIS\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "06_UART_TX_CMSIS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\06_UART_TX_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="06_UART_TX_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-05_GPIO_INPUT_CMSIS.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "05_GPIO_INPUT_CMSIS.list"
+06_UART_TX_CMSIS.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "06_UART_TX_CMSIS.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 05_GPIO_INPUT_CMSIS.elf 05_GPIO_INPUT_CMSIS.list 05_GPIO_INPUT_CMSIS.map default.size.stdout
+	-$(RM) 06_UART_TX_CMSIS.elf 06_UART_TX_CMSIS.list 06_UART_TX_CMSIS.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
