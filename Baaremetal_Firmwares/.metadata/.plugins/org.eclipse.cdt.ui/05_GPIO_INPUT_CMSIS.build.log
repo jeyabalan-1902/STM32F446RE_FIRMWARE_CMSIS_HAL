@@ -1,0 +1,10 @@
+21:50:09 **** Incremental Build of configuration Debug for project 05_GPIO_INPUT_CMSIS ****
+make -j8 all 
+arm-none-eabi-size  05_GPIO_INPUT_CMSIS.elf 
+   text	   data	    bss	    dec	    hex	filename
+    820	      0	   1568	   2388	    954	05_GPIO_INPUT_CMSIS.elf
+Finished building: default.size.stdout
+ 
+
+21:50:09 Build Finished. 0 errors, 0 warnings. (took 295ms)
+

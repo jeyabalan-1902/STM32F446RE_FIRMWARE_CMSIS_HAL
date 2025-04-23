@@ -1,0 +1,10 @@
+17:53:02 **** Incremental Build of configuration Debug for project 04_GPIO_CMSIS_BSRR ****
+make -j8 all 
+arm-none-eabi-size  04_GPIO_CMSIS_BSRR.elf 
+   text	   data	    bss	    dec	    hex	filename
+    824	      0	   1568	   2392	    958	04_GPIO_CMSIS_BSRR.elf
+Finished building: default.size.stdout
+ 
+
+17:53:02 Build Finished. 0 errors, 0 warnings. (took 285ms)
+
