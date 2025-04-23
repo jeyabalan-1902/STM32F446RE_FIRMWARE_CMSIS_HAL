@@ -1,14 +1,24 @@
-18:24:45 **** Build of configuration Debug for project 06_UART_TX_CMSIS ****
+23:18:06 **** Build of configuration Debug for project 09_UART_RX_CMSIS ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "06_UART_TX_CMSIS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\06_UART_TX_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="06_UART_TX_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 06_UART_TX_CMSIS.elf
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/09_UART_RX_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/09_UART_RX_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/09_UART_RX_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/uart2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/09_UART_RX_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart2.d" -MT"Src/uart2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart2.o"
+arm-none-eabi-gcc -o "09_UART_RX_CMSIS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\09_UART_RX_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="09_UART_RX_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 09_UART_RX_CMSIS.elf
  
-arm-none-eabi-size  06_UART_TX_CMSIS.elf 
-arm-none-eabi-objdump -h -S 06_UART_TX_CMSIS.elf  > "06_UART_TX_CMSIS.list"
+arm-none-eabi-size  09_UART_RX_CMSIS.elf 
+arm-none-eabi-objdump -h -S 09_UART_RX_CMSIS.elf  > "09_UART_RX_CMSIS.list"
    text	   data	    bss	    dec	    hex	filename
-    932	      0	   1568	   2500	    9c4	06_UART_TX_CMSIS.elf
+   1148	      0	   1568	   2716	    a9c	09_UART_RX_CMSIS.elf
 Finished building: default.size.stdout
  
-Finished building: 06_UART_TX_CMSIS.list
+Finished building: 09_UART_RX_CMSIS.list
+ 
+23:18:24 **** Incremental Build of configuration Debug for project 09_UART_RX_CMSIS ****
+make -j8 all 
+arm-none-eabi-size  09_UART_RX_CMSIS.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1148	      0	   1568	   2716	    a9c	09_UART_RX_CMSIS.elf
+Finished building: default.size.stdout
  

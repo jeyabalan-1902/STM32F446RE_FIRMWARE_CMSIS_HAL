@@ -1,0 +1,10 @@
+22:29:54 **** Incremental Build of configuration Debug for project 08_UART_MODULAR_CMSIS ****
+make -j8 all 
+arm-none-eabi-size  08_UART_MODULAR_CMSIS.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5244	     92	   1900	   7236	   1c44	08_UART_MODULAR_CMSIS.elf
+Finished building: default.size.stdout
+ 
+
+22:29:55 Build Finished. 0 errors, 0 warnings. (took 348ms)
+

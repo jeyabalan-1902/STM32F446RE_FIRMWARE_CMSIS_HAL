@@ -1,0 +1,10 @@
+23:18:24 **** Incremental Build of configuration Debug for project 09_UART_RX_CMSIS ****
+make -j8 all 
+arm-none-eabi-size  09_UART_RX_CMSIS.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1148	      0	   1568	   2716	    a9c	09_UART_RX_CMSIS.elf
+Finished building: default.size.stdout
+ 
+
+23:18:24 Build Finished. 0 errors, 0 warnings. (took 356ms)
+

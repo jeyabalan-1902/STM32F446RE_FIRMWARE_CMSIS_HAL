@@ -1,4 +1,4 @@
-18:24:45 **** Build of configuration Debug for project 06_UART_TX_CMSIS ****
+21:58:28 **** Incremental Build of configuration Debug for project 06_UART_TX_CMSIS ****
 make -j8 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baaremetal_Firmwares/MCU_Headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
 arm-none-eabi-gcc -o "06_UART_TX_CMSIS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\06_UART_TX_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="06_UART_TX_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,11 +7,11 @@ Finished building target: 06_UART_TX_CMSIS.elf
 arm-none-eabi-size  06_UART_TX_CMSIS.elf 
 arm-none-eabi-objdump -h -S 06_UART_TX_CMSIS.elf  > "06_UART_TX_CMSIS.list"
    text	   data	    bss	    dec	    hex	filename
-    932	      0	   1568	   2500	    9c4	06_UART_TX_CMSIS.elf
+   1024	      0	   1568	   2592	    a20	06_UART_TX_CMSIS.elf
 Finished building: default.size.stdout
  
 Finished building: 06_UART_TX_CMSIS.list
  
 
-18:24:48 Build Finished. 0 errors, 0 warnings. (took 3s.218ms)
+21:58:29 Build Finished. 0 errors, 0 warnings. (took 995ms)
 
