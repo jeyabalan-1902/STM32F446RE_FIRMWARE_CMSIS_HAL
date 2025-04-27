@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<item key="LastUsedSourceTemplate" value="Default C source template"/>
 	<item key="LastUsedHeaderTemplate" value="Default C header template"/>
-	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="${workspace_loc:/${ProjName}/Inc}"/>
+	<item key="org.eclipse.cdt.utils.ui.controls.FileListControl" value="&quot;C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\MCU_Headers\CMSIS\Include&quot;"/>
 	<section name="completion_proposal_size">
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">

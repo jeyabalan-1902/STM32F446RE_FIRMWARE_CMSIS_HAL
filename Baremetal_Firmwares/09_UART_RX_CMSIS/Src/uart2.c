@@ -26,11 +26,6 @@ static uint16_t compute_uart_bd(uint32_t PeriphClk, uint32_t BaudRate);
 static void uart_set_baudrate(USART_TypeDef *USARTx, uint32_t PeriphClk, uint32_t BaudRate);
 void UART2_Transmit(int ch);
 
-int __io_putchar(int ch)
-{
-	UART2_Transmit(ch);
-	return ch;
-}
 
 void UART2_Transmit(int ch)
 {

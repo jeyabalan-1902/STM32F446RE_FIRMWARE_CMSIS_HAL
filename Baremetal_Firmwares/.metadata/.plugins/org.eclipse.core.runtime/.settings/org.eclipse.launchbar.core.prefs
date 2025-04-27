@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:09_UART_RX_CMSIS Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07_UART_PRINTF Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:08_UART_MODULAR_CMSIS Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:09_UART_RX_CMSIS Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_Led_Toggle\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_Led_Toggle\ Debug/activeLaunchTarget=null\:---
@@ -10,3 +10,5 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:03_GPIO_CMSIS\ Debug/activeLaun
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:06_UART_TX_CMSIS\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:06_UART_TX_CMSIS\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07_UART_PRINTF\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07_UART_PRINTF\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:09_UART_RX_CMSIS\ Debug/activeLaunchMode=run

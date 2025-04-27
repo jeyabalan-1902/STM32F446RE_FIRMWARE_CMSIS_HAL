@@ -59,8 +59,8 @@ all: main-build
 main-build: 09_UART_RX_CMSIS.elf secondary-outputs
 
 # Tool invocations
-09_UART_RX_CMSIS.elf 09_UART_RX_CMSIS.map: $(OBJS) $(USER_OBJS) C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\09_UART_RX_CMSIS\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "09_UART_RX_CMSIS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baaremetal_Firmwares\09_UART_RX_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="09_UART_RX_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+09_UART_RX_CMSIS.elf 09_UART_RX_CMSIS.map: $(OBJS) $(USER_OBJS) C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\09_UART_RX_CMSIS\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "09_UART_RX_CMSIS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\09_UART_RX_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="09_UART_RX_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,14 +1,22 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdint.h>
 #include "stm32f4xx.h"
 #include "uart2.h"
 
 #define GPIOAEN (1U << 0)
 #define PIN5    (1U << 5)
+#define SR_RXNE     (1U << 5)
 
 #define LED     PIN5
 
-char rx_buff;
+char data;
+
+int __io_putchar(int ch)
+{
+	UART2_Transmit(ch);
+	return ch;
+}
 
 int main(void)
 {
@@ -16,11 +24,13 @@ int main(void)
 	GPIOA->MODER |= (1U << 10);
 	GPIOA->MODER &= ~(1U << 11);
 	UART2_Init();
+	printf("Hello World!\r\n");
 
 	while(1)
 	{
-		rx_buff = uart2_receive();
-		if(rx_buff == '1')
+		data = uart2_receive();
+		printf("%c", data);
+		if(data == '1')
 		{
 			GPIOA->ODR |= LED;
 		}

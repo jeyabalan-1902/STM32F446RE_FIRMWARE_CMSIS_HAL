@@ -13,6 +13,8 @@
 
 void UART2_Init(void);
 char uart2_receive(void);
+void UART2_Transmit(int ch);
+
 
 
 #endif /* UART2_H_ */
