@@ -3936,3 +3936,42 @@ org.eclipse.core.runtime.CoreException: attempt to set description for a project
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2025-04-28 11:25:03.412
 !MESSAGE Won't launch debug session since we failed to locate the binary.
+!SESSION 2025-05-01 09:22:12.155 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-01 09:22:55.436
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-01 09:22:55.458
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-01 09:23:06.024
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-01 10:53:04.180
+!MESSAGE Indexed 'uart_rtos_test' (36 sources, 151 headers) in 13.9 sec: 17,270 declarations; 83,559 references; 8 unresolved inclusions; 1,280 syntax errors; 1,583 unresolved names (1.5%)
+!SESSION 2025-05-01 18:42:03.111 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-01 18:42:36.676
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-01 18:42:36.694
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-01 18:42:53.945
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-01 19:15:42.375
+!MESSAGE Indexed 'MPU6050_F401RE_GP' (29 sources, 120 headers) in 9.31 sec: 11,032 declarations; 38,702 references; 5 unresolved inclusions; 1,117 syntax errors; 2,052 unresolved names (4%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-01 19:18:13.379
+!MESSAGE Indexed 'MPU6050_F401RE_GP' (29 sources, 121 headers) in 3.67 sec: 11,038 declarations; 41,656 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.45%)
