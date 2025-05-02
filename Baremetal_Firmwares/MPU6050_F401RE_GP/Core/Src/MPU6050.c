@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "MPU6050.h"
 #include "main.h"
 #include "i2c.h"

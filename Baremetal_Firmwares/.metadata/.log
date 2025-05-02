@@ -3975,3 +3975,33 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\kjeya\D
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-05-01 19:18:13.379
 !MESSAGE Indexed 'MPU6050_F401RE_GP' (29 sources, 121 headers) in 3.67 sec: 11,038 declarations; 41,656 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.45%)
+!SESSION 2025-05-02 09:21:04.397 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-02 09:21:40.422
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-02 09:21:40.439
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-02 09:21:52.154
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-05-02 10:40:30.490 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-02 10:40:54.929
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-02 10:40:54.935
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-02 10:41:05.363
+!MESSAGE Started RMI Server, listening on port 41337
