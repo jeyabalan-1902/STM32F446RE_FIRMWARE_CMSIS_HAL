@@ -115,7 +115,8 @@ int main(void)
 	  //			CalculateGyroAngle(&Angle, &MPU6050);
 	  //			printf("%f, %f, %f\n", Angle.gyro_roll,Angle.gyro_pitch,Angle.gyro_yaw);
 	  			CalculateCompliFilter(&Angle, &MPU6050);
-	  			printf("%f, %f, %f\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
+	  			printf("%f",Angle.ComFilt_yaw);
+//	  			printf("%f, %f, %f\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
 	  		}
 
     /* USER CODE END WHILE */

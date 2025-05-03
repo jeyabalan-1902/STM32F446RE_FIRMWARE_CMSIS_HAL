@@ -1,0 +1,10 @@
+13:02:58 **** Incremental Build of configuration Debug for project 11_TIMERS_CMSIS ****
+make -j8 all 
+arm-none-eabi-size  11_TIMERS_CMSIS.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5648	     92	   1900	   7640	   1dd8	11_TIMERS_CMSIS.elf
+Finished building: default.size.stdout
+ 
+
+13:02:58 Build Finished. 0 errors, 0 warnings. (took 232ms)
+
