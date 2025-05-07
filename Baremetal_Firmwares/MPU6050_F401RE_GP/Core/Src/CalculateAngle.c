@@ -1,4 +1,5 @@
 #include "CalculateAngle.h"
+#include <math.h>
 
 Struct_Angle Angle;
 
@@ -23,7 +24,20 @@ void CalculateCompliFilter(Struct_Angle* Angle, Struct_MPU6050* MPU6050)
 	CalculateAccAngle(Angle, MPU6050); //Prepare Acc Angle before using Complimentary Filter.
 
 	static float alpha = 0.96f;
+
 	Angle->ComFilt_roll  = alpha*(MPU6050->gyro_y * dt + Angle->ComFilt_roll) + (1-alpha) * Angle->acc_roll;
 	Angle->ComFilt_pitch = alpha*(MPU6050->gyro_x * dt + Angle->ComFilt_pitch) + (1-alpha) * Angle->acc_pitch;
+
+	float corrected_gyro_z = 0.0f;
+
+	if(fabs(corrected_gyro_z) < GYRO_DEADBAND)
+	{
+		corrected_gyro_z = 0.0f;
+	}
 	Angle->ComFilt_yaw   = Angle->ComFilt_yaw + MPU6050->gyro_z * dt;
+
+	if (fabs(MPU6050->gyro_x) < 0.05f && fabs(MPU6050->gyro_y) < 0.05f && fabs(corrected_gyro_z) < 0.05f)
+	{
+		Angle->ComFilt_yaw *= 0.999f;  // slow decay to reduce drift
+	}
 }

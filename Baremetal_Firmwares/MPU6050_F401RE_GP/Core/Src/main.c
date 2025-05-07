@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <string.h>
 #include "MPU6050.h"
 #include "CalculateAngle.h"
 /* USER CODE END Includes */
@@ -47,7 +48,10 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
+
+char uartBuf[50];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,6 +62,14 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+void Send_Yaw_Angle_UART(float yaw)
+{
+    int len = snprintf(uartBuf, sizeof(uartBuf), "%f\r\n", yaw);
+    HAL_UART_Transmit(&huart1, (uint8_t*)uartBuf, len, HAL_MAX_DELAY);
+}
+
+
 #ifdef __GNUC__
 #define UART_printf   int __io_putchar(int ch)
 UART_printf
@@ -99,8 +111,13 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   MPU6050_Initialization();
+
+  HAL_Delay(1000);
+
+  CalibrateGyroZ(&MPU6050, 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,16 +125,14 @@ int main(void)
   while (1)
   {
 	  if(MPU6050_DataReady() == 1)
-	  		{
-	  			MPU6050_ProcessData(&MPU6050);
-	  //			CalculateAccAngle(&Angle, &MPU6050);
-	  //			printf("%f, %f, %f\n", Angle.acc_roll, Angle.acc_pitch, Angle.acc_yaw);
-	  //			CalculateGyroAngle(&Angle, &MPU6050);
-	  //			printf("%f, %f, %f\n", Angle.gyro_roll,Angle.gyro_pitch,Angle.gyro_yaw);
-	  			CalculateCompliFilter(&Angle, &MPU6050);
-	  			printf("%f",Angle.ComFilt_yaw);
-//	  			printf("%f, %f, %f\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
-	  		}
+		{
+			MPU6050_ProcessData(&MPU6050);
+			CalculateCompliFilter(&Angle, &MPU6050);
+			printf("%f\n\r",Angle.ComFilt_yaw);
+			Send_Yaw_Angle_UART(Angle.ComFilt_yaw);
+			//HAL_Delay(10);
+	//	  			printf("%f, %f, %f\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
+		}
 
     /* USER CODE END WHILE */
 

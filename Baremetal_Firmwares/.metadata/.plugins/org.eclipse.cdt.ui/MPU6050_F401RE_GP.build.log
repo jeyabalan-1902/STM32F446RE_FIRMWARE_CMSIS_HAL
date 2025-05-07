@@ -1,10 +1,10 @@
-15:46:11 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
+15:10:39 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
 make -j8 all 
 arm-none-eabi-size  MPU6050_F401RE_GP.elf 
    text	   data	    bss	    dec	    hex	filename
-  34092	    496	   2152	  36740	   8f84	MPU6050_F401RE_GP.elf
+  35596	    496	   2280	  38372	   95e4	MPU6050_F401RE_GP.elf
 Finished building: default.size.stdout
  
 
-15:46:12 Build Finished. 0 errors, 0 warnings. (took 446ms)
+15:10:40 Build Finished. 0 errors, 0 warnings. (took 461ms)
 

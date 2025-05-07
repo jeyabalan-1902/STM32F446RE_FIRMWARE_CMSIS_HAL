@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -49,7 +49,6 @@ I2C_HandleTypeDef hi2c1;
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart6;
-DMA_HandleTypeDef hdma_usart1_rx;
 DMA_HandleTypeDef hdma_usart6_rx;
 
 /* Definitions for defaultTask */
@@ -112,37 +111,38 @@ void StartMutex(void)
 
 void UART1_Task(void *argument)
 {
-    uint16_t newPos = 0;
+    uint8_t rx_byte;
+    char rx_buffer[64];
+    uint16_t index = 0;
+
     for (;;)
     {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);  // Wait until IDLE detected
-
-        newPos = UART_BUFFER_SIZE - __HAL_DMA_GET_COUNTER(huart1.hdmarx);
-
-        if (newPos != oldPos_uart1)
-        {
-            if (newPos > oldPos_uart1)
-            {
-                memcpy(ringBuffer_uart1, &dmaRxBuffer_uart1[oldPos_uart1], newPos - oldPos_uart1);
-                ringBuffer_uart1[newPos - oldPos_uart1] = '\0';
-            }
-            else
-            {
-                // buffer wrapped
-                memcpy(ringBuffer_uart1, &dmaRxBuffer_uart1[oldPos_uart1], UART_BUFFER_SIZE - oldPos_uart1);
-                memcpy(&ringBuffer_uart1[UART_BUFFER_SIZE - oldPos_uart1], dmaRxBuffer_uart1, newPos);
-                ringBuffer_uart1[(UART_BUFFER_SIZE - oldPos_uart1) + newPos] = '\0';
-            }
-
-            oldPos_uart1 = newPos;
-
-            // Send to UART2
-            osMutexAcquire(uart2MutexHandle, osWaitForever);
-            HAL_UART_Transmit(&huart2, (uint8_t*)"UART1: ", 7, HAL_MAX_DELAY);
-            HAL_UART_Transmit(&huart2, (uint8_t*)ringBuffer_uart1, strlen((char*)ringBuffer_uart1), HAL_MAX_DELAY);
-            HAL_UART_Transmit(&huart2, (uint8_t*)"\r\n", 2, HAL_MAX_DELAY);
-            osMutexRelease(uart2MutexHandle);
-        }
+    	char test_msg[] = "Task is running\r\n";
+    	HAL_UART_Transmit(&huart2, (uint8_t*)test_msg, strlen(test_msg), 100);
+    	osDelay(1000);
+//        // Blocking receive of 1 byte
+//        if (HAL_UART_Receive(&huart1, &rx_byte, 1, HAL_MAX_DELAY) == HAL_OK)
+//        {
+//            if (rx_byte == '\n' || rx_byte == '\r')
+//            {
+//                if (index > 0)
+//                {
+//                    rx_buffer[index] = '\0';  // Null-terminate the string
+//
+//                    // Convert to float and print to UART2
+//                    float yaw = atof((char *)rx_buffer);
+//                    char msg[64];
+//                    snprintf(msg, sizeof(msg), "Yaw: %.6f\r\n", yaw);
+//
+//                    HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), HAL_MAX_DELAY);
+//                    index = 0;  // Reset for next line
+//                }
+//            }
+//            else if (index < sizeof(rx_buffer) - 1)
+//            {
+//                rx_buffer[index++] = rx_byte;
+//            }
+//        }
     }
 }
 
@@ -305,12 +305,12 @@ int main(void)
   };
   uart1TaskHandle = osThreadNew(UART1_Task, NULL, &uart1Task_attributes);
 
-  osThreadAttr_t uart6Task_attributes = {
-    .name = "uart6Task",
-    .priority = (osPriority_t) osPriorityNormal,
-    .stack_size = 256 * 4
-  };
-  uart6TaskHandle = osThreadNew(UART6_Task, NULL, &uart6Task_attributes);
+//  osThreadAttr_t uart6Task_attributes = {
+//    .name = "uart6Task",
+//    .priority = (osPriority_t) osPriorityNormal,
+//    .stack_size = 256 * 4
+//  };
+//  uart6TaskHandle = osThreadNew(UART6_Task, NULL, &uart6Task_attributes);
 //    osThreadNew(Task_uart1, NULL, &(osThreadAttr_t){
 //	  .name = "UART1 Task",
 //	  .priority = (osPriority_t)osPriorityAboveNormal1,
@@ -533,9 +533,6 @@ static void MX_DMA_Init(void)
   /* DMA2_Stream1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
-  /* DMA2_Stream2_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
 
 }
 

@@ -3,10 +3,22 @@
 #include "main.h"
 #include "i2c.h"
 
+#define GYRO_DEADBAND 0.5f
+#define MA_FILTER_LEN 10
+
+float gyro_x_buf[MA_FILTER_LEN] = {0};
+float gyro_y_buf[MA_FILTER_LEN] = {0};
+float gyro_z_buf[MA_FILTER_LEN] = {0};
+int ma_index = 0;
+
+
 Struct_MPU6050 MPU6050;
 
 static float LSB_Sensitivity_ACC;
 static float LSB_Sensitivity_GYRO;
+
+int16_t gyro_x_offset = 0, gyro_y_offset = 0;
+float gyro_z_offset = 0.0f;
 
 void MPU6050_Writebyte(uint8_t reg_addr, uint8_t val)
 {
@@ -125,6 +137,44 @@ void MPU6050_Get6AxisRawData(Struct_MPU6050* mpu6050)
 	mpu6050->gyro_z_raw = ((data[12] << 8) | data[13]);
 }
 
+
+float ApplyDeadband(float value, float threshold) {
+    if (value > -threshold && value < threshold)
+        return 0.0f;
+    else
+        return value;
+}
+
+void CalibrateGyroZ(Struct_MPU6050* mpu, int samples)
+{
+    int32_t sum = 0;
+    for (int i = 0; i < samples; i++)
+    {
+        MPU6050_Get6AxisRawData(mpu);
+        sum += mpu->gyro_z_raw;
+        HAL_Delay(5); // Adjust delay as needed
+    }
+    gyro_z_offset = (float)sum / samples / LSB_Sensitivity_GYRO;
+}
+
+void MPU6050_CalculateGyroOffset(Struct_MPU6050* mpu6050)
+{
+    int32_t sum_x = 0, sum_y = 0, sum_z = 0;
+    int samples = 500;
+
+    for (int i = 0; i < samples; i++) {
+        MPU6050_Get6AxisRawData(mpu6050);
+        sum_x += mpu6050->gyro_x_raw;
+        sum_y += mpu6050->gyro_y_raw;
+        sum_z += mpu6050->gyro_z_raw;
+        HAL_Delay(2);
+    }
+
+    gyro_x_offset = sum_x / samples;
+    gyro_y_offset = sum_y / samples;
+    gyro_z_offset = sum_z / samples;
+}
+
 void MPU6050_Get_LSB_Sensitivity(uint8_t FS_SCALE_GYRO, uint8_t FS_SCALE_ACC)
 {
 	switch(FS_SCALE_GYRO)
@@ -159,6 +209,16 @@ void MPU6050_Get_LSB_Sensitivity(uint8_t FS_SCALE_GYRO, uint8_t FS_SCALE_ACC)
 	}
 }
 
+float MovingAverageFilter(float* buffer, float new_sample)
+{
+    buffer[ma_index] = new_sample;
+    ma_index = (ma_index + 1) % MA_FILTER_LEN;
+
+    float sum = 0.0f;
+    for (int i = 0; i < MA_FILTER_LEN; i++) sum += buffer[i];
+    return sum / MA_FILTER_LEN;
+}
+
 /*Convert Unit. acc_raw -> g, gyro_raw -> degree per second*/
 void MPU6050_DataConvert(Struct_MPU6050* mpu6050)
 {
@@ -168,6 +228,18 @@ void MPU6050_DataConvert(Struct_MPU6050* mpu6050)
 	mpu6050->acc_z = mpu6050->acc_z_raw / LSB_Sensitivity_ACC;
 
 	mpu6050->temperature = (float)(mpu6050->temperature_raw)/340+36.53;
+
+//	mpu6050->gyro_x = ApplyDeadband((mpu6050->gyro_x_raw - gyro_x_offset) / LSB_Sensitivity_GYRO, GYRO_DEADBAND);
+//	mpu6050->gyro_y = ApplyDeadband((mpu6050->gyro_y_raw - gyro_y_offset) / LSB_Sensitivity_GYRO, GYRO_DEADBAND);
+//	mpu6050->gyro_z = ApplyDeadband((mpu6050->gyro_z_raw - gyro_z_offset) / LSB_Sensitivity_GYRO, GYRO_DEADBAND);
+//	float raw_gyro_x = (mpu6050->gyro_x_raw - gyro_x_offset) / LSB_Sensitivity_GYRO;
+//	mpu6050->gyro_x = MovingAverageFilter(gyro_x_buf, raw_gyro_x);
+//
+//	float raw_gyro_y = (mpu6050->gyro_y_raw - gyro_y_offset) / LSB_Sensitivity_GYRO;
+//	mpu6050->gyro_y = MovingAverageFilter(gyro_y_buf, raw_gyro_y);
+//
+//	float raw_gyro_z = (mpu6050->gyro_z_raw - gyro_z_offset) / LSB_Sensitivity_GYRO;
+//	mpu6050->gyro_z = MovingAverageFilter(gyro_z_buf, raw_gyro_z);
 
 	mpu6050->gyro_x = mpu6050->gyro_x_raw / LSB_Sensitivity_GYRO;
 	mpu6050->gyro_y = mpu6050->gyro_y_raw / LSB_Sensitivity_GYRO;

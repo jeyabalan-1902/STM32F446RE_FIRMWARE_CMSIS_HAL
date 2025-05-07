@@ -1,35 +1,22 @@
-15:37:00 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
+17:32:47 **** Incremental Build of configuration Debug for project 12_TIMER_OUTPUT_COMPARE ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "MPU6050_F401RE_GP.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\MPU6050_F401RE_GP\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MPU6050_F401RE_GP.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: MPU6050_F401RE_GP.elf
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/12_TIMER_OUTPUT_COMPARE/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/12_TIMER_OUTPUT_COMPARE/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/tim.d" -MT"Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/tim.o"
+arm-none-eabi-gcc -o "12_TIMER_OUTPUT_COMPARE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\12_TIMER_OUTPUT_COMPARE\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="12_TIMER_OUTPUT_COMPARE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 12_TIMER_OUTPUT_COMPARE.elf
  
-arm-none-eabi-size  MPU6050_F401RE_GP.elf 
-arm-none-eabi-objdump -h -S MPU6050_F401RE_GP.elf  > "MPU6050_F401RE_GP.list"
+arm-none-eabi-size  12_TIMER_OUTPUT_COMPARE.elf 
+arm-none-eabi-objdump -h -S 12_TIMER_OUTPUT_COMPARE.elf  > "12_TIMER_OUTPUT_COMPARE.list"
    text	   data	    bss	    dec	    hex	filename
-  34092	    496	   2152	  36740	   8f84	MPU6050_F401RE_GP.elf
+    876	      0	   1568	   2444	    98c	12_TIMER_OUTPUT_COMPARE.elf
 Finished building: default.size.stdout
  
-Finished building: MPU6050_F401RE_GP.list
+Finished building: 12_TIMER_OUTPUT_COMPARE.list
  
-15:37:05 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
+17:32:52 **** Incremental Build of configuration Debug for project 12_TIMER_OUTPUT_COMPARE ****
 make -j8 all 
-arm-none-eabi-size  MPU6050_F401RE_GP.elf 
+arm-none-eabi-size  12_TIMER_OUTPUT_COMPARE.elf 
    text	   data	    bss	    dec	    hex	filename
-  34092	    496	   2152	  36740	   8f84	MPU6050_F401RE_GP.elf
-Finished building: default.size.stdout
- 
-15:39:25 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
-make -j8 all 
-arm-none-eabi-size  MPU6050_F401RE_GP.elf 
-   text	   data	    bss	    dec	    hex	filename
-  34092	    496	   2152	  36740	   8f84	MPU6050_F401RE_GP.elf
-Finished building: default.size.stdout
- 
-15:46:11 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
-make -j8 all 
-arm-none-eabi-size  MPU6050_F401RE_GP.elf 
-   text	   data	    bss	    dec	    hex	filename
-  34092	    496	   2152	  36740	   8f84	MPU6050_F401RE_GP.elf
+    876	      0	   1568	   2444	    98c	12_TIMER_OUTPUT_COMPARE.elf
 Finished building: default.size.stdout
  

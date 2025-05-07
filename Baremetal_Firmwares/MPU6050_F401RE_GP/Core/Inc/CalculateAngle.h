@@ -9,6 +9,9 @@ extern "C" {
 
 #define RADIAN_TO_DEGREE 180/3.141592f
 
+#define GYRO_DEADBAND 0.05f
+
+
 typedef struct _Angle{
 	float acc_roll;
 	float acc_pitch;
