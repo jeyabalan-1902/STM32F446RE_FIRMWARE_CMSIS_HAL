@@ -54,9 +54,6 @@ extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart2;
 extern I2C_HandleTypeDef hi2c2;
 
-int16_t mx, my, mz;
-char buffer[100];
-
 char uartBuf[50];
 /* USER CODE END PV */
 
@@ -68,22 +65,6 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-
-void HMC8388L_setup(void)
-{
-	 I2Cdev_init(&hi2c2);
-	 HMC5883L_initialize();
-
-	 if (HMC5883L_testConnection())
-	 {
-		 printf("HMC5883L Connection Success\n\r");
-	 }
-	 else
-	 {
-		 printf("HMC5883L Connection Failed\n\r");
-	 }
-}
 
 void Send_Yaw_Angle_UART(float yaw)
 {
@@ -136,8 +117,9 @@ int main(void)
   MX_USART1_UART_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-  //MPU6050_Initialization();
-  HMC8388L_setup();
+  I2Cdev_init(&hi2c2);
+  MPU6050_Initialization();
+
   HAL_Delay(1000);
 
   CalibrateGyroZ(&MPU6050, 100);
@@ -147,19 +129,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HMC5883L_getHeading(&mx, &my, &mz);  // Reads raw magnetometer data
-	  sprintf(buffer, "Mag X: %d\tY: %d\tZ: %d\r\n", mx, my, mz);
-	  printf("%s \n", buffer);
-	  HAL_Delay(10);
-//	  if(MPU6050_DataReady() == 1)
-//		{
-//			MPU6050_ProcessData(&MPU6050);
-//			CalculateCompliFilter(&Angle, &MPU6050);
-//			printf("%f\n\r",Angle.ComFilt_yaw);
-//			Send_Yaw_Angle_UART(Angle.ComFilt_yaw);
-//			//HAL_Delay(10);
-//	//	  			printf("%f, %f, %f\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
-//		}
+	  if(MPU6050_DataReady() == 1)
+		{
+			MPU6050_ProcessData(&MPU6050);
+			CalculateCompliFilter(&Angle, &MPU6050);
+			printf("%f\n\r",Angle.ComFilt_yaw);
+			Send_Yaw_Angle_UART(Angle.ComFilt_yaw);
+			//HAL_Delay(10);
+	//	  			printf("%f, %f, %f\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
+		}
 
     /* USER CODE END WHILE */
 

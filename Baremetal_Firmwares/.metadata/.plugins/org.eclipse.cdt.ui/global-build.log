@@ -1,22 +1,35 @@
-11:59:22 **** Incremental Build of configuration Debug for project 13_TIMER_INPUT_CAPTURE ****
+17:37:21 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/13_TIMER_INPUT_CAPTURE/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/uart2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/13_TIMER_INPUT_CAPTURE/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart2.d" -MT"Src/uart2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart2.o"
-arm-none-eabi-gcc -o "13_TIMER_INPUT_CAPTURE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\13_TIMER_INPUT_CAPTURE\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="13_TIMER_INPUT_CAPTURE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 13_TIMER_INPUT_CAPTURE.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "MPU6050_F401RE_GP.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\MPU6050_F401RE_GP\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MPU6050_F401RE_GP.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MPU6050_F401RE_GP.elf
  
-arm-none-eabi-size  13_TIMER_INPUT_CAPTURE.elf 
-arm-none-eabi-objdump -h -S 13_TIMER_INPUT_CAPTURE.elf  > "13_TIMER_INPUT_CAPTURE.list"
+arm-none-eabi-size  MPU6050_F401RE_GP.elf 
+arm-none-eabi-objdump -h -S MPU6050_F401RE_GP.elf  > "MPU6050_F401RE_GP.list"
    text	   data	    bss	    dec	    hex	filename
-   5284	     92	   1908	   7284	   1c74	13_TIMER_INPUT_CAPTURE.elf
+  31640	    468	   2396	  34504	   86c8	MPU6050_F401RE_GP.elf
 Finished building: default.size.stdout
  
-Finished building: 13_TIMER_INPUT_CAPTURE.list
+Finished building: MPU6050_F401RE_GP.list
  
-11:59:27 **** Incremental Build of configuration Debug for project 13_TIMER_INPUT_CAPTURE ****
+17:37:32 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
 make -j8 all 
-arm-none-eabi-size  13_TIMER_INPUT_CAPTURE.elf 
+arm-none-eabi-size  MPU6050_F401RE_GP.elf 
    text	   data	    bss	    dec	    hex	filename
-   5284	     92	   1908	   7284	   1c74	13_TIMER_INPUT_CAPTURE.elf
+  31640	    468	   2396	  34504	   86c8	MPU6050_F401RE_GP.elf
 Finished building: default.size.stdout
+ 
+17:41:07 **** Incremental Build of configuration Debug for project MPU6050_F401RE_GP ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "MPU6050_F401RE_GP.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\MPU6050_F401RE_GP\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MPU6050_F401RE_GP.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MPU6050_F401RE_GP.elf
+ 
+arm-none-eabi-size  MPU6050_F401RE_GP.elf 
+arm-none-eabi-objdump -h -S MPU6050_F401RE_GP.elf  > "MPU6050_F401RE_GP.list"
+   text	   data	    bss	    dec	    hex	filename
+  31640	    468	   2396	  34504	   86c8	MPU6050_F401RE_GP.elf
+Finished building: default.size.stdout
+ 
+Finished building: MPU6050_F401RE_GP.list
  

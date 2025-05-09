@@ -148,6 +148,7 @@ int main(void)
   while (1)
   {
 	  HMC5883L_getHeading(&mx, &my, &mz);  // Reads raw magnetometer data
+
 	  sprintf(buffer, "Mag X: %d\tY: %d\tZ: %d\r\n", mx, my, mz);
 	  printf("%s \n", buffer);
 	  HAL_Delay(10);
