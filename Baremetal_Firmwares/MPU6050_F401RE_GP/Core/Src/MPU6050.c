@@ -44,44 +44,44 @@ void MPU6050_Initialization(void)
 {
 	HAL_Delay(50);
 	uint8_t who_am_i = 0;
-	printf("Checking MPU6050...\n");
+	//printf("Checking MPU6050...\n");
 
 	MPU6050_Readbyte(MPU6050_WHO_AM_I, &who_am_i);
 	if(who_am_i == 0x68)
 	{
-		printf("MPU6050 who_am_i = 0x%02x...OK\n", who_am_i);
+		//printf("MPU6050 who_am_i = 0x%02x...OK\n", who_am_i);
 	}
 	else
 	{
-		printf("ERROR!\n");
-		printf("MPU6050 who_am_i : 0x%02x should be 0x68\n", who_am_i);
+		//printf("ERROR!\n");
+		//printf("MPU6050 who_am_i : 0x%02x should be 0x68\n", who_am_i);
 		while(1)
 		{
-			printf("who am i error. Can not recognize mpu6050\n");
-			HAL_Delay(100);
+			//printf("who am i error. Can not recognize mpu6050\n");
+			osDelay(100);
 		}
 	}
 
 	//Reset the whole module before initialization
 	MPU6050_Writebyte(MPU6050_PWR_MGMT_1, 0x1<<7);
-	HAL_Delay(100);
+	osDelay(100);
 
 	//Power Management setting
 	/* Default is sleep mode
 	 * necessary to wake up MPU6050*/
 	MPU6050_Writebyte(MPU6050_PWR_MGMT_1, 0x00);
-	HAL_Delay(50);
+	osDelay(50);
 
 	//Sample rate divider
 	/*Sample Rate = Gyroscope Output Rate / (1 + SMPRT_DIV) */
 	//	MPU6050_Writebyte(MPU6050_SMPRT_DIV, 0x00); // ACC output rate is 1kHz, GYRO output rate is 8kHz
 	MPU6050_Writebyte(MPU6050_SMPRT_DIV, 39); // Sample Rate = 200Hz
-	HAL_Delay(50);
+	osDelay(50);
 
 	//FSYNC and DLPF setting
 	/*DLPF is set to 0*/
 	MPU6050_Writebyte(MPU6050_CONFIG, 0x00);
-	HAL_Delay(50);
+	osDelay(50);
 
 	//GYRO FULL SCALE setting
 	/*FS_SEL  Full Scale Range
@@ -91,7 +91,7 @@ void MPU6050_Initialization(void)
 	  3		+-2000 degree/s	*/
 	uint8_t FS_SCALE_GYRO = 0x0;
 	MPU6050_Writebyte(MPU6050_GYRO_CONFIG, FS_SCALE_GYRO<<3);
-	HAL_Delay(50);
+	osDelay(50);
 
 	//ACCEL FULL SCALE setting
 	/*FS_SEL  Full Scale Range
@@ -101,24 +101,24 @@ void MPU6050_Initialization(void)
 	  3		+-16g	*/
 	uint8_t FS_SCALE_ACC = 0x0;
 	MPU6050_Writebyte(MPU6050_ACCEL_CONFIG, FS_SCALE_ACC<<3);
-	HAL_Delay(50);
+	osDelay(50);
 
 	MPU6050_Get_LSB_Sensitivity(FS_SCALE_GYRO, FS_SCALE_ACC);
-	printf("LSB_Sensitivity_GYRO: %f, LSB_Sensitivity_ACC: %f\n",LSB_Sensitivity_GYRO, LSB_Sensitivity_ACC);
+	//printf("LSB_Sensitivity_GYRO: %f, LSB_Sensitivity_ACC: %f\n",LSB_Sensitivity_GYRO, LSB_Sensitivity_ACC);
 
 	//Interrupt PIN setting
 	uint8_t INT_LEVEL = 0x0; //0 - active high, 1 - active low
 	uint8_t LATCH_INT_EN = 0x0; //0 - INT 50us pulse, 1 - interrupt clear required
 	uint8_t INT_RD_CLEAR = 0x1; //0 - INT flag cleared by reading INT_STATUS, 1 - INT flag cleared by any read operation
 	MPU6050_Writebyte(MPU6050_INT_PIN_CFG, (INT_LEVEL<<7)|(LATCH_INT_EN<<5)|(INT_RD_CLEAR<<4)); //
-	HAL_Delay(50);
+	//HAL_Delay(50);
 
 	//Interrupt enable setting
 	uint8_t DATA_RDY_EN = 0x1; // 1 - enable, 0 - disable
 	MPU6050_Writebyte(MPU6050_INT_ENABLE, DATA_RDY_EN);
-	HAL_Delay(50);
+	osDelay(50);
 
-	printf("MPU6050 setting is finished\n");
+	//printf("MPU6050 setting is finished\n");
 }
 /*Get Raw Data from sensor*/
 void MPU6050_Get6AxisRawData(Struct_MPU6050* mpu6050)
@@ -152,7 +152,7 @@ void CalibrateGyroZ(Struct_MPU6050* mpu, int samples)
     {
         MPU6050_Get6AxisRawData(mpu);
         sum += mpu->gyro_z_raw;
-        HAL_Delay(5); // Adjust delay as needed
+        osDelay(5); // Adjust delay as needed
     }
     gyro_z_offset = (float)sum / samples / LSB_Sensitivity_GYRO;
 }
@@ -167,7 +167,7 @@ void MPU6050_CalculateGyroOffset(Struct_MPU6050* mpu6050)
         sum_x += mpu6050->gyro_x_raw;
         sum_y += mpu6050->gyro_y_raw;
         sum_z += mpu6050->gyro_z_raw;
-        HAL_Delay(2);
+        osDelay(2);
     }
 
     gyro_x_offset = sum_x / samples;

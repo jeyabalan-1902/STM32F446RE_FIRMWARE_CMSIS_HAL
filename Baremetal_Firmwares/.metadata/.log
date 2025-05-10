@@ -5733,3 +5733,105 @@ java.lang.NullPointerException: Cannot invoke "org.eclipse.cdt.managedbuilder.in
 	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:291)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2025-05-10 09:22:40.920 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-05-10 09:23:58.230
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-05-10 09:23:58.243
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-05-10 09:24:09.448
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.make.core 4 0 2025-05-10 13:17:16.363
+!MESSAGE Project: uart_rtos_test is closed or inaccessible!
+!STACK 1
+org.eclipse.core.runtime.CoreException: Project: uart_rtos_test is closed or inaccessible!
+	at org.eclipse.cdt.internal.core.settings.model.ExceptionFactory.createCoreException(ExceptionFactory.java:25)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionStorage(CProjectDescriptionManager.java:888)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:425)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.createProjectDescription(CProjectDescriptionManager.java:612)
+	at org.eclipse.cdt.internal.core.CConfigBasedDescriptorManager.createProjDescriptionForDescriptor(CConfigBasedDescriptorManager.java:363)
+	at org.eclipse.cdt.internal.core.CConfigBasedDescriptorManager.findDescriptor(CConfigBasedDescriptorManager.java:333)
+	at org.eclipse.cdt.internal.core.CConfigBasedDescriptorManager.getDescriptor(CConfigBasedDescriptorManager.java:232)
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(CCorePlugin.java:881)
+	at org.eclipse.cdt.make.internal.core.ProjectTargets.<init>(ProjectTargets.java:73)
+	at org.eclipse.cdt.make.internal.core.MakeTargetManager.readTargets(MakeTargetManager.java:326)
+	at org.eclipse.cdt.make.internal.core.MakeTargetManager.getTargets(MakeTargetManager.java:161)
+	at org.eclipse.cdt.make.internal.ui.MakeNavContentProvider.getContainer(MakeNavContentProvider.java:62)
+	at org.eclipse.cdt.make.internal.ui.MakeNavContentProvider.getChildren(MakeNavContentProvider.java:53)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.getChildren(SafeDelegateTreeContentProvider.java:98)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.getChildren(SafeDelegateTreeContentProvider.java:241)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.getChildren(SafeDelegateTreeContentProvider.java:96)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$1.run(NavigatorContentServiceContentProvider.java:160)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.internalGetChildren(NavigatorContentServiceContentProvider.java:146)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getChildren(NavigatorContentServiceContentProvider.java:132)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getRawChildren(AbstractTreeViewer.java:1448)
+	at org.eclipse.jface.viewers.TreeViewer.getRawChildren(TreeViewer.java:351)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:850)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getSortedChildren(AbstractTreeViewer.java:655)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updateChildren(AbstractTreeViewer.java:2781)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefreshStruct(AbstractTreeViewer.java:1995)
+	at org.eclipse.jface.viewers.TreeViewer.internalRefreshStruct(TreeViewer.java:688)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1964)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1921)
+	at org.eclipse.ui.navigator.CommonViewer.internalRefresh(CommonViewer.java:530)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1491)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1397)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:366)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1358)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1491)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:538)
+	at org.eclipse.ui.navigator.CommonViewer.refresh(CommonViewer.java:349)
+	at org.eclipse.ui.navigator.CommonViewer.refresh(CommonViewer.java:493)
+	at org.eclipse.cdt.ui.CElementContentProvider$RefreshElement.refresh(CElementContentProvider.java:367)
+	at org.eclipse.cdt.ui.CElementContentProvider.lambda$1(CElementContentProvider.java:450)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4046)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3662)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2025-05-10 13:17:16.368
+!MESSAGE Project: uart_rtos_test is closed or inaccessible!
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-10 14:51:41.747
+!MESSAGE Indexed 'ANGLE_DETECTION_RTOS_PROJ' (19 sources, 81 headers) in 6.11 sec: 4,551 declarations; 21,847 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0076%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-10 15:07:20.276
+!MESSAGE Indexed 'ANGLE_DETECTION_RTOS_PROJ' (24 sources, 86 headers) in 3.89 sec: 7,060 declarations; 54,981 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-10 16:33:39.949
+!MESSAGE Indexed 'ANGLE_DETECTION_RTOS_PROJ' (25 sources, 95 headers) in 4.48 sec: 7,494 declarations; 56,200 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-10 16:43:41.770
+!MESSAGE Indexed 'ANGLE_DETECTION_RTOS_PROJ' (24 sources, 95 headers) in 2.22 sec: 7,443 declarations; 55,752 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-05-10 17:11:51.341
+!MESSAGE Indexed 'ANGLE_DETECTION_RTOS_PROJ' (37 sources, 108 headers) in 2.53 sec: 9,607 declarations; 65,980 references; 0 unresolved inclusions; 1 syntax errors; 8 unresolved names (0.011%)

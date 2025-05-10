@@ -1,0 +1,3 @@
+../Core/Src/CalculateAngle.c:6:6:CalculateAccAngle	32	static
+../Core/Src/CalculateAngle.c:15:6:CalculateGyroAngle	16	static
+../Core/Src/CalculateAngle.c:22:6:CalculateCompliFilter	16	static

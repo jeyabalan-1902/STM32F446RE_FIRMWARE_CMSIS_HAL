@@ -2,7 +2,7 @@
 ../Core/Src/MPU6050.c:28:6:MPU6050_Writebytes	32	static
 ../Core/Src/MPU6050.c:33:6:MPU6050_Readbyte	32	static
 ../Core/Src/MPU6050.c:38:6:MPU6050_Readbytes	32	static
-../Core/Src/MPU6050.c:43:6:MPU6050_Initialization	32	static
+../Core/Src/MPU6050.c:43:6:MPU6050_Initialization	16	static
 ../Core/Src/MPU6050.c:124:6:MPU6050_Get6AxisRawData	32	static
 ../Core/Src/MPU6050.c:141:7:ApplyDeadband	16	static
 ../Core/Src/MPU6050.c:148:6:CalibrateGyroZ	24	static

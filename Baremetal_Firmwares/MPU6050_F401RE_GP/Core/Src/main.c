@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
@@ -25,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <math.h>
 #include <string.h>
 #include "MPU6050.h"
 #include "CalculateAngle.h"
@@ -55,13 +57,19 @@ extern UART_HandleTypeDef huart2;
 extern I2C_HandleTypeDef hi2c2;
 
 int16_t mx, my, mz;
-char buffer[100];
-
+float pitch, roll;
 char uartBuf[50];
+float mx_comp, my_comp;
+float yaw;
+
+TaskHandle_t mpu6050_Handler;
+TaskHandle_t HMC5883L_Handler;
+osMutexId_t uart2MutexHandle;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -70,25 +78,58 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 
 
-void HMC8388L_setup(void)
-{
-	 I2Cdev_init(&hi2c2);
-	 HMC5883L_initialize();
-
-	 if (HMC5883L_testConnection())
-	 {
-		 printf("HMC5883L Connection Success\n\r");
-	 }
-	 else
-	 {
-		 printf("HMC5883L Connection Failed\n\r");
-	 }
-}
-
 void Send_Yaw_Angle_UART(float yaw)
 {
     int len = snprintf(uartBuf, sizeof(uartBuf), "%f\r\n", yaw);
     HAL_UART_Transmit(&huart1, (uint8_t*)uartBuf, len, HAL_MAX_DELAY);
+}
+
+void MPU6050_Task(void *argument)
+{
+	MPU6050_Initialization();
+	osDelay(1000);
+    while (1) {
+    	if(MPU6050_DataReady() == 1)
+		{
+			MPU6050_ProcessData(&MPU6050);
+			CalculateCompliFilter(&Angle, &MPU6050);
+			char buffer[64];
+			sprintf(buffer, "MPU6050 Yaw: %f\n\r",Angle.ComFilt_yaw);
+			osMutexAcquire(uart2MutexHandle, osWaitForever);
+			HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+			osMutexRelease(uart2MutexHandle);
+			osDelay(10);
+		}
+    }
+}
+
+void HMC5883L_Task(void *argument)
+{
+	char buffer[64];
+	HMC5883L_initialize();
+	osDelay(100);
+    while (1) {
+    	HMC5883L_getHeading(&mx, &my, &mz);
+		float fx = (float)mx;
+		float fy = (float)my;
+		float fz = (float)mz;
+		float pitchRad = pitch * M_PI / 180.0;
+		float rollRad  = roll  * M_PI / 180.0;
+
+		mx_comp = fx * cos(pitchRad) + fz * sin(pitchRad);
+		my_comp = fx * sin(rollRad) * sin(pitchRad) + fy * cos(rollRad) - fz * sin(rollRad) * cos(pitchRad);
+
+		yaw = atan2(my_comp, mx_comp) * 180.0 / M_PI;
+
+		if (yaw < 0)
+			yaw += 360;
+    	sprintf(buffer, "HMC5883L Yaw: %.2f°\r\n", yaw);
+    	osMutexAcquire(uart2MutexHandle, osWaitForever);
+    	//HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
+    	printf("%s", buffer);
+    	osMutexRelease(uart2MutexHandle);
+        osDelay(10);
+    }
 }
 
 
@@ -136,21 +177,44 @@ int main(void)
   MX_USART1_UART_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-  //MPU6050_Initialization();
-  HMC8388L_setup();
-  HAL_Delay(1000);
-
-  CalibrateGyroZ(&MPU6050, 100);
+  I2Cdev_init(&hi2c2);
   /* USER CODE END 2 */
+
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+
+
+  uart2MutexHandle = osMutexNew(NULL);
+
+//  const osThreadAttr_t mpu6050Task_attributes = {
+//    .name = "MPU6050",
+//    .priority = (osPriority_t) osPriorityAboveNormal,
+//    .stack_size = 128 * 4
+//  };
+//  mpu6050_Handler = osThreadNew(MPU6050_Task, NULL, &mpu6050Task_attributes);
+
+  const osThreadAttr_t hmc5883lTask_attributes = {
+	.name = "HMC5883L",
+	.priority = (osPriority_t) osPriorityAboveNormal1,
+	.stack_size = 128 * 4
+  };
+  HMC5883L_Handler = osThreadNew(HMC5883L_Task, NULL, &hmc5883lTask_attributes);
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HMC5883L_getHeading(&mx, &my, &mz);  // Reads raw magnetometer data
-	  sprintf(buffer, "Mag X: %d\tY: %d\tZ: %d\r\n", mx, my, mz);
-	  printf("%s \n", buffer);
-	  HAL_Delay(10);
+//	  HMC5883L_getHeading(&mx, &my, &mz);  // Reads raw magnetometer data
+//	  sprintf(buffer, "Mag X: %d\tY: %d\tZ: %d\r\n", mx, my, mz);
+//	  printf("%s \n", buffer);
+//	  computeYawFromMag();
+//	  HAL_Delay(10);
 //	  if(MPU6050_DataReady() == 1)
 //		{
 //			MPU6050_ProcessData(&MPU6050);
@@ -217,6 +281,27 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

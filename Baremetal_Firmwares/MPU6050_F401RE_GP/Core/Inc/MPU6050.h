@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include "main.h"
+#include "cmsis_os.h"
 
 #define MPU6050_ADDR 0xD0
 
