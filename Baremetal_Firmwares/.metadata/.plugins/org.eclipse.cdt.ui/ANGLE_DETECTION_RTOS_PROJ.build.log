@@ -1,10 +1,10 @@
-18:09:44 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
+18:11:32 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
 make -j8 all 
 arm-none-eabi-size  ANGLE_DETECTION_RTOS_PROJ.elf 
    text	   data	    bss	    dec	    hex	filename
-  51280	    504	  79664	 131448	  20178	ANGLE_DETECTION_RTOS_PROJ.elf
+  58752	    504	  79664	 138920	  21ea8	ANGLE_DETECTION_RTOS_PROJ.elf
 Finished building: default.size.stdout
  
 
-18:09:45 Build Finished. 0 errors, 0 warnings. (took 513ms)
+18:11:33 Build Finished. 0 errors, 0 warnings. (took 664ms)
 

@@ -21,12 +21,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "freeRTOS.h"
 #include "task.h"
+#include "semphr.h"
 
 #include "I2Cdev.h"
 #include "HMC5883L.h"
@@ -55,12 +56,14 @@
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 TaskHandle_t mpu6050_handler;
 TaskHandle_t hmc5883l_handler;
 BaseType_t status;
+xSemaphoreHandle xUartMutex;
 
 int16_t mx, my, mz;
 float pitch, roll;
@@ -68,7 +71,7 @@ char uartBuf[50];
 float mx_comp, my_comp;
 float yaw;
 
-char buffer[100];
+
 
 /* USER CODE END PV */
 
@@ -78,6 +81,7 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 static void hmc5883l_task(void* parameters);
 static void mpu6050_task(void* parameters);
@@ -120,6 +124,7 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   I2Cdev_init(&hi2c2);
   HMC5883L_initialize();
@@ -127,22 +132,37 @@ int main(void)
 
   if (HMC5883L_testConnection())
   {
+	  char buffer[100];
 	  sprintf(buffer, "HMC5883L Connected\r\n");
 	  HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
   }
   else
   {
+	  char buffer[100];
 	  sprintf(buffer, "HMC5883L Connection Failed\r\n");
 	  HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
   }
 
-  status = xTaskCreate(mpu6050_task, "gyro-accel", 512, NULL, 4, &mpu6050_handler);
-  configASSERT(status == pdPASS);
+  xUartMutex = xSemaphoreCreateMutex();
 
-  status = xTaskCreate(hmc5883l_task, "magnetometer", 2048, NULL, 4, &hmc5883l_handler);
-  configASSERT(status == pdPASS);
+  if(xUartMutex != NULL)
+  {
+	status = xTaskCreate(mpu6050_task, "gyro-accel", 2048, NULL, 1, &mpu6050_handler);
+	configASSERT(status == pdPASS);
 
-  vTaskStartScheduler();
+	status = xTaskCreate(hmc5883l_task, "magnetometer", 2048, NULL, 1, &hmc5883l_handler);
+	configASSERT(status == pdPASS);
+
+	xSemaphoreGive(xUartMutex);
+
+	vTaskStartScheduler();
+  }
+  else
+  {
+	  printf("binary semaphore creation failed\n\r");
+  }
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -272,6 +292,39 @@ static void MX_I2C2_Init(void)
 }
 
 /**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -334,27 +387,46 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 static void mpu6050_task(void* parameters)
 {
+	char buffer[200];
 	while(1)
 	{
-		if(MPU6050_DataReady() == 1)
-		{
-			MPU6050_ProcessData(&MPU6050);
-			CalculateCompliFilter(&Angle, &MPU6050);
-			printf("%f\r\n",Angle.ComFilt_yaw);
-		}
-		taskYIELD();
+		MPU6050_ProcessData(&MPU6050);
+		CalculateAccAngle(&Angle, &MPU6050);
+		CalculateGyroAngle(&Angle, &MPU6050);
+		CalculateCompliFilter(&Angle, &MPU6050);
+		xSemaphoreTake( xUartMutex, portMAX_DELAY);
+		sprintf(buffer, "Pitch: %0.2f\t Roll: %0.2f\t Yaw: %0.2f\r\n", Angle.ComFilt_roll,Angle.ComFilt_pitch,Angle.ComFilt_yaw);
+		HAL_UART_Transmit(&huart1, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
+		printf("%s", buffer);
+		xSemaphoreGive(xUartMutex);
 		vTaskDelay(10);
 	}
 }
 
 static void hmc5883l_task(void* parameters)
 {
+	char buffer[100];
 	while(1)
 	{
 		HMC5883L_getHeading(&mx, &my, &mz);
-		sprintf(buffer, "Mag X: %d\tY: %d\tZ: %d\r\n", mx, my, mz);
-		HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-		taskYIELD();
+		float fx = (float)mx;
+		float fy = (float)my;
+		float fz = (float)mz;
+		float pitchRad = pitch * M_PI / 180.0;
+		float rollRad  = roll  * M_PI / 180.0;
+
+		mx_comp = fx * cos(pitchRad) + fz * sin(pitchRad);
+		my_comp = fx * sin(rollRad) * sin(pitchRad) + fy * cos(rollRad) - fz * sin(rollRad) * cos(pitchRad);
+
+		yaw = atan2(my_comp, mx_comp) * 180.0 / M_PI;
+
+		if (yaw < 0)
+			yaw += 360;
+		xSemaphoreTake( xUartMutex, portMAX_DELAY);
+		sprintf(buffer, "HMC5883L Yaw: %.2f°\r\n", yaw);
+		HAL_UART_Transmit(&huart1, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
+		printf("%s\n", buffer);
+		xSemaphoreGive(xUartMutex);
 		vTaskDelay(10);
 	}
 }

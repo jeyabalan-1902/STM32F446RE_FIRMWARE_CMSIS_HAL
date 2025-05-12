@@ -1,28 +1,21 @@
-18:05:36 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
+18:11:27 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ANGLE_DETECTION_RTOS_PROJ.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\ANGLE_DETECTION_RTOS_PROJ\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ANGLE_DETECTION_RTOS_PROJ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ANGLE_DETECTION_RTOS_PROJ.elf
+ 
 arm-none-eabi-size  ANGLE_DETECTION_RTOS_PROJ.elf 
+arm-none-eabi-objdump -h -S ANGLE_DETECTION_RTOS_PROJ.elf  > "ANGLE_DETECTION_RTOS_PROJ.list"
    text	   data	    bss	    dec	    hex	filename
-  51280	    504	  79664	 131448	  20178	ANGLE_DETECTION_RTOS_PROJ.elf
+  58752	    504	  79664	 138920	  21ea8	ANGLE_DETECTION_RTOS_PROJ.elf
 Finished building: default.size.stdout
  
-18:05:40 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
-make -j8 all 
-arm-none-eabi-size  ANGLE_DETECTION_RTOS_PROJ.elf 
-   text	   data	    bss	    dec	    hex	filename
-  51280	    504	  79664	 131448	  20178	ANGLE_DETECTION_RTOS_PROJ.elf
-Finished building: default.size.stdout
+Finished building: ANGLE_DETECTION_RTOS_PROJ.list
  
-18:08:27 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
+18:11:32 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
 make -j8 all 
 arm-none-eabi-size  ANGLE_DETECTION_RTOS_PROJ.elf 
    text	   data	    bss	    dec	    hex	filename
-  51280	    504	  79664	 131448	  20178	ANGLE_DETECTION_RTOS_PROJ.elf
-Finished building: default.size.stdout
- 
-18:09:44 **** Incremental Build of configuration Debug for project ANGLE_DETECTION_RTOS_PROJ ****
-make -j8 all 
-arm-none-eabi-size  ANGLE_DETECTION_RTOS_PROJ.elf 
-   text	   data	    bss	    dec	    hex	filename
-  51280	    504	  79664	 131448	  20178	ANGLE_DETECTION_RTOS_PROJ.elf
+  58752	    504	  79664	 138920	  21ea8	ANGLE_DETECTION_RTOS_PROJ.elf
 Finished building: default.size.stdout
  

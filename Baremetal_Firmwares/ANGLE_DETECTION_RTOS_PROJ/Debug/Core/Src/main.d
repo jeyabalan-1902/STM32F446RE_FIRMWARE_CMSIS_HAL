@@ -38,6 +38,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/mpu_wrappers.h \
  C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/task.h \
  C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/list.h \
+ C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/semphr.h \
+ C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/queue.h \
+ C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/task.h \
  ../Core/Inc/I2Cdev.h ../Core/Inc/HMC5883L.h ../Core/Inc/I2Cdev.h \
  ../Core/Inc/MPU6050.h ../Core/Inc/main.h ../Core/Inc/CalculateAngle.h \
  ../Core/Inc/MPU6050.h
@@ -81,6 +84,9 @@ C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_
 C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/mpu_wrappers.h:
 C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/task.h:
 C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/list.h:
+C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/semphr.h:
+C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/queue.h:
+C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/ANGLE_DETECTION_RTOS_PROJ/RTOS/FreeRTOS/include/task.h:
 ../Core/Inc/I2Cdev.h:
 ../Core/Inc/HMC5883L.h:
 ../Core/Inc/I2Cdev.h:
