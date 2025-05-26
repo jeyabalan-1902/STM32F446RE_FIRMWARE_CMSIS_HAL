@@ -71,8 +71,6 @@ char uartBuf[50];
 float mx_comp, my_comp;
 float yaw;
 
-
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
