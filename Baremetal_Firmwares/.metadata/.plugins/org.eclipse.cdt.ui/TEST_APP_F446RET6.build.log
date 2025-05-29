@@ -1,0 +1,19 @@
+18:08:53 **** Incremental Build of configuration Debug for project TEST_APP_F446RET6 ****
+make -j8 all 
+arm-none-eabi-gcc -o "TEST_APP_F446RET6.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\TEST_APP_F446RET6\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TEST_APP_F446RET6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TEST_APP_F446RET6.elf
+ 
+arm-none-eabi-size  TEST_APP_F446RET6.elf 
+arm-none-eabi-objdump -h -S TEST_APP_F446RET6.elf  > "TEST_APP_F446RET6.list"
+arm-none-eabi-objcopy  -O binary TEST_APP_F446RET6.elf  "TEST_APP_F446RET6.bin"
+   text	   data	    bss	    dec	    hex	filename
+  12980	    104	   1976	  15060	   3ad4	TEST_APP_F446RET6.elf
+Finished building: default.size.stdout
+ 
+Finished building: TEST_APP_F446RET6.list
+ 
+Finished building: TEST_APP_F446RET6.bin
+ 
+
+18:08:54 Build Finished. 0 errors, 0 warnings. (took 892ms)
+
