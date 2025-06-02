@@ -1,0 +1,108 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6276
+load:0x40078000,len:15748
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3860
+entry 0x4008063c
+[0;32mI (31) boot: ESP-IDF v5.4.1-dirty 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jun  2 2025 13:03:37[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (33) boot: chip revision: v3.1[0m
+[0;32mI (36) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (40) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (83) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2029ch (131740) map[0m
+[0;32mI (135) esp_image: segment 1: paddr=000302c4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (136) esp_image: segment 2: paddr=000302e8 vaddr=3ffb0000 size=03f20h ( 16160) load[0m
+[0;32mI (145) esp_image: segment 3: paddr=00034210 vaddr=40080000 size=0be08h ( 48648) load[0m
+[0;32mI (166) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=a5098h (675992) map[0m
+[0;32mI (397) esp_image: segment 5: paddr=000e50c0 vaddr=4008be08 size=0c998h ( 51608) load[0m
+[0;32mI (429) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (429) boot: Disabling RNG early entropy source...[0m
+[0;32mI (439) cpu_start: Multicore app[0m
+[0;32mI (448) cpu_start: Pro cpu start user code[0m
+[0;32mI (448) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (448) app_init: Application information:[0m
+[0;32mI (448) app_init: Project name:     ota_transmitter_app[0m
+[0;32mI (453) app_init: App version:      1[0m
+[0;32mI (456) app_init: Compile time:     Jun  2 2025 13:02:54[0m
+[0;32mI (461) app_init: ELF file SHA256:  aacecb0d6...[0m
+[0;32mI (466) app_init: ESP-IDF:          v5.4.1-dirty[0m
+[0;32mI (470) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (474) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (478) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (482) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (488) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (493) heap_init: At 3FFB87B8 len 00027848 (158 KiB): DRAM[0m
+[0;32mI (498) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (504) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (509) heap_init: At 400987A0 len 00007860 (30 KiB): IRAM[0m
+[0;32mI (516) spi_flash: detected chip: generic[0m
+[0;32mI (518) spi_flash: flash io: dio[0m
+[0;32mI (522) main_task: Started on CPU0[0m
+[0;32mI (532) main_task: Calling app_main()[0m
+[0;32mI (562) wifi:wifi driver task: 3ffc1d1c, prio:23, stack:6656, core=0[0m
+[0;32mI (572) wifi:wifi firmware version: 79fa3f41ba[0m
+[0;32mI (572) wifi:wifi certification version: v7.0[0m
+[0;32mI (572) wifi:config NVS flash: enabled[0m
+[0;32mI (572) wifi:config nano formatting: disabled[0m
+[0;32mI (582) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (582) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (582) wifi:Init management short buffer num: 32[0m
+[0;32mI (592) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (592) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (602) wifi:Init static rx buffer num: 10[0m
+[0;32mI (602) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (612) wifi_init: rx ba win: 6[0m
+[0;32mI (612) wifi_init: accept mbox: 6[0m
+[0;32mI (612) wifi_init: tcpip mbox: 32[0m
+[0;32mI (612) wifi_init: udp mbox: 6[0m
+[0;32mI (622) wifi_init: tcp mbox: 6[0m
+[0;32mI (622) wifi_init: tcp tx win: 5760[0m
+[0;32mI (622) wifi_init: tcp rx win: 5760[0m
+[0;32mI (632) wifi_init: tcp mss: 1440[0m
+[0;32mI (632) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (632) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (642) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (652) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (732) wifi:mode : sta (a0:b7:65:20:c1:a0)[0m
+[0;32mI (732) wifi:enable tsf[0m
+[0;32mI (742) OTA_UART: Connecting to WiFi...[0m
+[1;31mE (742) esp-tls: couldn't get hostname for :mqtt.onwords.in: getaddrinfo() returns 202, addrinfo=0x0[0m
+[1;31mE (742) transport_base: Failed to open a new connection: 32769[0m
+[1;31mE (752) mqtt_client: Error transport connect[0m
+[0;32mI (752) OTA_UART: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (752) wifi:new:<11,2>, old:<1,0>, ap:<255,255>, sta:<11,2>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (772) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (772) main_task: Returned from app_main()[0m
+[0;32mI (782) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (792) wifi:Association refused temporarily time 1000, comeback time 1100 (TUs)[0m
+[0;32mI (1912) wifi:state: assoc -> assoc (0x0)[0m
+[0;32mI (1922) wifi:state: assoc -> run (0x10)[0m
+[1;31mE (10772) esp-tls: couldn't get hostname for :mqtt.onwords.in: getaddrinfo() returns 202, addrinfo=0x0[0m
+[1;31mE (10772) transport_base: Failed to open a new connection: 32769[0m
+[1;31mE (10772) mqtt_client: Error transport connect[0m
+[0;32mI (10772) OTA_UART: MQTT_EVENT_DISCONNECTED[0m
+[0;32mI (11922) wifi:state: run -> init (0xcc00)[0m
+[0;32mI (11932) wifi:new:<11,0>, old:<11,2>, ap:<255,255>, sta:<11,2>, prof:1, snd_ch_cfg:0x0[0m
+[1;31mE (25782) esp-tls: couldn't get hostname for :mqtt.onwords.in: getaddrinfo() returns 202, addrinfo=0x0[0m
+[1;31mE (25782) transport_base: Failed to open a new connection: 32769[0m
+[1;31mE (25782) mqtt_client: Error transport connect[0m
+[0;32mI (25782) OTA_UART: MQTT_EVENT_DISCONNECTED[0m
+[1;31mE (40792) esp-tls: couldn't get hostname for :mqtt.onwords.in: getaddrinfo() returns 202, addrinfo=0x0[0m
+[1;31mE (40792) transport_base: Failed to open a new connection: 32769[0m
+[1;31mE (40792) mqtt_client: Error transport connect[0m
+[0;32mI (40792) OTA_UART: MQTT_EVENT_DISCONNECTED[0m

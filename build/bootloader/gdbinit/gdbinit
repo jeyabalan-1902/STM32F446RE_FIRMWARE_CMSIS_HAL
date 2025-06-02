@@ -1,0 +1,2 @@
+source C:/Users/kjeya/Documents/ESP_IDF_v5.4_projects/STM32_OTA_UPDATER/build/bootloader/gdbinit/symbols
+source C:/Users/kjeya/Documents/ESP_IDF_v5.4_projects/STM32_OTA_UPDATER/build/bootloader/gdbinit/connect
