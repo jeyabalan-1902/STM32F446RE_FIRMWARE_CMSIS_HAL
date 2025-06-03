@@ -313,19 +313,18 @@ static uint16_t etx_receive_chunk( uint8_t *buf, uint16_t max_len )
   */
 static void etx_ota_send_resp( uint8_t type )
 {
-  ETX_OTA_RESP_ rsp =
-  {
-    .sof         = ETX_OTA_SOF,
-    .packet_type = ETX_OTA_PACKET_TYPE_RESPONSE,
-    .data_len    = 1u,
-    .status      = type,
-    .crc         = 0u,                //TODO: Add CRC
-    .eof         = ETX_OTA_EOF
-  };
-
-  //send response
-  HAL_UART_Transmit(&huart3, (uint8_t *)&rsp, sizeof(ETX_OTA_RESP_), HAL_MAX_DELAY);
+	ETX_OTA_RESP_ rsp = {
+	    .sof         = ETX_OTA_SOF,     // 0xAA
+	    .packet_type = ETX_OTA_PACKET_TYPE_RESPONSE, // 0x03
+	    .data_len    = 1,
+	    .status      = ETX_OTA_ACK,     // 0x00
+	    .crc         = 0,
+	    .eof         = ETX_OTA_EOF      // 0xBB
+	};
+	HAL_UART_Transmit(&huart3, (uint8_t *)&rsp, sizeof(ETX_OTA_RESP_), HAL_MAX_DELAY);
+	printf("Sending ACK response\r\n");
 }
+
 
 /**
   * @brief Write data to the Application's actual flash location.

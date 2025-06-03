@@ -1,10 +1,10 @@
-15:25:04 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+22:46:21 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
 make -j8 all 
 arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
    text	   data	    bss	    dec	    hex	filename
-  14156	    112	   2048	  16316	   3fbc	BOOTLOADER_F446RET6.elf
+  13704	    104	   2056	  15864	   3df8	BOOTLOADER_F446RET6.elf
 Finished building: default.size.stdout
  
 
-15:25:05 Build Finished. 0 errors, 0 warnings. (took 392ms)
+22:46:22 Build Finished. 0 errors, 0 warnings. (took 336ms)
 

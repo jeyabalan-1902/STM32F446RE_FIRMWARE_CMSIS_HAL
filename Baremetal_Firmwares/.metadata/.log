@@ -6913,3 +6913,48 @@ Project's 'TEST_APP_F446RET6' active one is 'TEST_APP_F446RET6.ioc' file
 !MESSAGE Invalid Input: Must be project's active .ioc file.
 
 Project's 'TEST_APP_F446RET6' active one is 'TEST_APP_F446RET6.ioc' file
+!SESSION 2025-06-02 09:25:12.772 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-02 09:25:48.584
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-02 09:25:48.603
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-02 09:26:03.683
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-06-02 12:55:58.608 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-02 12:56:26.622
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-02 12:56:26.637
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-02 12:56:37.723
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-06-02 21:26:29.741 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-02 21:26:48.652
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-02 21:26:48.655
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-02 21:26:58.854
+!MESSAGE Started RMI Server, listening on port 41337
