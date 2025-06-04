@@ -1,0 +1,6 @@
+C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Src/uart2.c:32:6:UART2_Transmit	2
+../Src/uart2.c:38:6:UART2_Init	1
+../Src/uart2.c:84:6:uart2_receive	2
+../Src/uart2.c:90:13:uart_set_baudrate	1
+../Src/uart2.c:96:17:compute_uart_bd	1

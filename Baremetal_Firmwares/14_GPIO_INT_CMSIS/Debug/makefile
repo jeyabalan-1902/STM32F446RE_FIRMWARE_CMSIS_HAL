@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 13_TIMER_INPUT_CAPTURE
+BUILD_ARTIFACT_NAME := 14_GPIO_INT_CMSIS
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-13_TIMER_INPUT_CAPTURE.elf \
+14_GPIO_INT_CMSIS.elf \
 
 MAP_FILES += \
-13_TIMER_INPUT_CAPTURE.map \
+14_GPIO_INT_CMSIS.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-13_TIMER_INPUT_CAPTURE.list \
+14_GPIO_INT_CMSIS.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 13_TIMER_INPUT_CAPTURE.elf secondary-outputs
+main-build: 14_GPIO_INT_CMSIS.elf secondary-outputs
 
 # Tool invocations
-13_TIMER_INPUT_CAPTURE.elf 13_TIMER_INPUT_CAPTURE.map: $(OBJS) $(USER_OBJS) C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\13_TIMER_INPUT_CAPTURE\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "13_TIMER_INPUT_CAPTURE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\13_TIMER_INPUT_CAPTURE\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="13_TIMER_INPUT_CAPTURE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+14_GPIO_INT_CMSIS.elf 14_GPIO_INT_CMSIS.map: $(OBJS) $(USER_OBJS) C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\14_GPIO_INT_CMSIS\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "14_GPIO_INT_CMSIS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\14_GPIO_INT_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="14_GPIO_INT_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-13_TIMER_INPUT_CAPTURE.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "13_TIMER_INPUT_CAPTURE.list"
+14_GPIO_INT_CMSIS.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "14_GPIO_INT_CMSIS.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 13_TIMER_INPUT_CAPTURE.elf 13_TIMER_INPUT_CAPTURE.list 13_TIMER_INPUT_CAPTURE.map default.size.stdout
+	-$(RM) 14_GPIO_INT_CMSIS.elf 14_GPIO_INT_CMSIS.list 14_GPIO_INT_CMSIS.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

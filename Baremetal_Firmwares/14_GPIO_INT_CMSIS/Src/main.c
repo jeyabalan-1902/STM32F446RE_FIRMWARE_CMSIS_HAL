@@ -5,10 +5,13 @@
 #include "uart2.h"
 #include "systick.h"
 #include "tim.h"
+#include "exti.h"
 
 
-char data;
-int timestamp = 0;
+#define GPIOAEN (1U << 0)
+#define PIN5    (1U << 5)
+
+#define LED     PIN5
 
 int __io_putchar(int ch)
 {
@@ -18,16 +21,30 @@ int __io_putchar(int ch)
 
 int main(void)
 {
-	void UART2_Init(void);
-    tim2_PA5_output_compare();
-    tim3_input_capture();
+	pc13_exti_init();
+	RCC->AHB1ENR |= GPIOAEN;
+	GPIOA->MODER |= (1U << 10);
+	GPIOA->MODER &= ~(1U << 11);
+	UART2_Init();
 	while(1)
 	{
-		/*wait until edges captured*/
-		while(!(TIM3->SR & SR_CC1IF)){}
-		/*read captured value*/
-		timestamp = TIM3->CCR1;
-		printf("%d", timestamp);
+
+	}
+}
+
+static void exti_callback(void)
+{
+	printf("button pressed\r\n");
+	GPIOA->ODR ^= LED;
+}
+
+void EXTI15_10_IRQHandler(void)
+{
+	if ((EXTI->PR & LINE13)!= 0)
+	{
+		/*clear the PR flag*/
+		EXTI->PR |= LINE13;
+		exti_callback();
 	}
 }
 

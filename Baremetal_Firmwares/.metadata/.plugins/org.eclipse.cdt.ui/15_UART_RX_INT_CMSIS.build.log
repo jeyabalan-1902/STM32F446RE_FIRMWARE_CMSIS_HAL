@@ -1,0 +1,17 @@
+15:44:55 **** Incremental Build of configuration Debug for project 15_UART_RX_INT_CMSIS ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/15_UART_RX_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "15_UART_RX_INT_CMSIS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\15_UART_RX_INT_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_UART_RX_INT_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 15_UART_RX_INT_CMSIS.elf
+ 
+arm-none-eabi-size  15_UART_RX_INT_CMSIS.elf 
+arm-none-eabi-objdump -h -S 15_UART_RX_INT_CMSIS.elf  > "15_UART_RX_INT_CMSIS.list"
+   text	   data	    bss	    dec	    hex	filename
+   3992	     92	   1908	   5992	   1768	15_UART_RX_INT_CMSIS.elf
+Finished building: default.size.stdout
+ 
+Finished building: 15_UART_RX_INT_CMSIS.list
+ 
+
+15:44:56 Build Finished. 0 errors, 0 warnings. (took 846ms)
+

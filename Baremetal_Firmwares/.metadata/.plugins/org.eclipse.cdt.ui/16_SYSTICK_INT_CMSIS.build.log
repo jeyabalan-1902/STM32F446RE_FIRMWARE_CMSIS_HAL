@@ -1,0 +1,10 @@
+17:14:13 **** Incremental Build of configuration Debug for project 16_SYSTICK_INT_CMSIS ****
+make -j8 all 
+arm-none-eabi-size  16_SYSTICK_INT_CMSIS.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3928	     92	   1900	   5920	   1720	16_SYSTICK_INT_CMSIS.elf
+Finished building: default.size.stdout
+ 
+
+17:14:14 Build Finished. 0 errors, 0 warnings. (took 294ms)
+

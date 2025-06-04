@@ -1,0 +1,4 @@
+../Src/main.c:15:5:__io_putchar	1
+../Src/main.c:21:5:main	1
+../Src/main.c:35:13:sysTick_callback	1
+../Src/main.c:41:6:SysTick_Handler	1

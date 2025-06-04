@@ -1,0 +1,2 @@
+C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Src/exti.c:14:6:pc13_exti_init	1
