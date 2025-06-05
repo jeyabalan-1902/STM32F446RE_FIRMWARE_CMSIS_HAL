@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <stdint.h>
+#include <stdarg.h>
 #include <string.h>
 /* USER CODE END Includes */
 
@@ -33,6 +35,20 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
+#define BL_GET_VER            0x51
+#define BL_GET_HELP           0x52
+#define BL_GET_CID            0x53
+#define BL_GET_RDP_STATUS     0x54
+#define BL_GO_TO_ADDR         0x55
+#define BL_FLASH_ERASE        0x56
+#define BL_MEM_WRITE          0x57
+#define BL_EN_RW_PROTECT      0x58
+#define BL_MEM_READ           0x59
+#define BL_READ_SECTOR_STATUS 0x5A
+#define BL_OTP_READ           0x5B
+#define BL_DIS_R_W_PROTECT    0x5C
+
+#define BL_RX_LEN             200
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -47,7 +63,7 @@ UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-
+uint8_t bl_rx_buffer[BL_RX_LEN];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -57,6 +73,19 @@ static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_CRC_Init(void);
 /* USER CODE BEGIN PFP */
+void bootloader_jump_to_application(void);
+void bootloader_read_uart_data(void);
+void bootloader_handle_read_otp(uint8_t *bl_rx_buffer);
+void bootloader_handle_read_sector_status(uint8_t *bl_rx_buffer);
+void bootloader_handle_mem_read(uint8_t *bl_rx_buffer);
+void bootloader_handle_endis_rw_protect(uint8_t *bl_rx_buffer);
+void bootloader_handle_mem_write_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_flash_erase_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_go_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_getrdp_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_getcid_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_gethelp_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_getver_cmd(uint8_t *bl_rx_buffer);
 
 /* USER CODE END PFP */
 
@@ -98,15 +127,16 @@ int main(void)
   MX_USART3_UART_Init();
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
-  char data[] = "hello from bootloader\r\n";
-  HAL_Delay(3000);
+  printf("Bootloader ready...\n");
   if (HAL_GPIO_ReadPin(button_GPIO_Port, button_Pin) == GPIO_PIN_RESET)
   {
 	  printf("Button is pressed...going to bootloader mode\n\r");
+	  bootloader_read_uart_data();
   }
   else
   {
 	  printf("button is not pressed...execute application code\n\r");
+	  bootloader_jump_to_application();
   }
   /* USER CODE END 2 */
 
@@ -114,7 +144,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -299,6 +328,131 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void bootloader_read_uart_data(void)
+{
+	uint8_t rcv_len = 0;
+	while(1)
+	{
+		memset(bl_rx_buffer, 0, 200);
+		HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
+		rcv_len = bl_rx_buffer[0];
+		HAL_UART_Receive(&huart3, &bl_rx_buffer[1], rcv_len, HAL_MAX_DELAY);
+		switch(bl_rx_buffer[1])
+		{
+			case BL_GET_VER:
+				bootloader_handle_getver_cmd(bl_rx_buffer);
+				break;
+			case BL_GET_HELP:
+				bootloader_handle_gethelp_cmd(bl_rx_buffer);
+				break;
+			case BL_GET_CID:
+				bootloader_handle_getcid_cmd(bl_rx_buffer);
+				break;
+			case BL_GET_RDP_STATUS:
+				bootloader_handle_getrdp_cmd(bl_rx_buffer);
+		 	    break;
+			case BL_GO_TO_ADDR:
+				bootloader_handle_go_cmd(bl_rx_buffer);
+				break;
+			case BL_FLASH_ERASE:
+				bootloader_handle_flash_erase_cmd(bl_rx_buffer);
+				break;
+			case BL_MEM_WRITE:
+				bootloader_handle_mem_write_cmd(bl_rx_buffer);
+				break;
+			case BL_EN_RW_PROTECT:
+				bootloader_handle_endis_rw_protect(bl_rx_buffer);
+				break;
+			case BL_MEM_READ:
+				bootloader_handle_mem_read(bl_rx_buffer);
+				break;
+			case BL_READ_SECTOR_STATUS:
+				bootloader_handle_read_sector_status(bl_rx_buffer);
+				break;
+			case BL_OTP_READ:
+				bootloader_handle_read_otp(bl_rx_buffer);
+				break;
+			default:
+
+		}
+	}
+}
+
+
+
+void bootloader_jump_to_application(void)
+{
+	printf("jumping to user application...\n");
+	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08008000 + 4U)));
+    printf("app reset handler addr:%#lx\n", app_reset_handler);
+	  /* Reset the Clock */
+	  HAL_RCC_DeInit();
+	  HAL_DeInit();
+	  __set_MSP(*(volatile uint32_t*) 0x08008000);
+	  SysTick->CTRL = 0;
+	  SysTick->LOAD = 0;
+	  SysTick->VAL = 0;
+
+	  /* Jump to application */
+	  app_reset_handler();
+}
+
+void bootloader_handle_read_otp(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_read_sector_status(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_mem_read(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_endis_rw_protect(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_mem_write_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_flash_erase_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_go_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_getrdp_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_getcid_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_gethelp_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
+void bootloader_handle_getver_cmd(uint8_t *bl_rx_buffer)
+{
+
+}
+
 
 #define PRINTF   int __io_putchar(int ch)
 PRINTF

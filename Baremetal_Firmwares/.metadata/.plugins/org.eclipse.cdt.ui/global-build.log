@@ -1,40 +1,37 @@
-17:29:33 **** Build of configuration Debug for project 17_TIMER_INT_CMSIS ****
+17:47:51 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc "../Src/systick.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/systick.d" -MT"Src/systick.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/systick.o"
-arm-none-eabi-gcc "../Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/tim.d" -MT"Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/tim.o"
-arm-none-eabi-gcc "../Src/uart2.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/uart2.d" -MT"Src/uart2.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart2.o"
-arm-none-eabi-gcc -o "17_TIMER_INT_CMSIS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\17_TIMER_INT_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="17_TIMER_INT_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 17_TIMER_INT_CMSIS.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'bootloader_read_uart_data':
+../Core/Src/main.c:338:43: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+  338 |                 HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
+      |                                           ^~~~~~~~~~~~~
+      |                                           |
+      |                                           uint8_t (*)[200] {aka unsigned char (*)[200]}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:746:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t (*)[200]' {aka 'unsigned char (*)[200]'}
+  746 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'bootloader_jump_to_application':
+../Core/Src/main.c:388:39: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'void (*)(void)' [-Wformat=]
+  388 |     printf("app reset handler addr:%#lx\n", app_reset_handler);
+      |                                    ~~~^     ~~~~~~~~~~~~~~~~~
+      |                                       |     |
+      |                                       |     void (*)(void)
+      |                                       long unsigned int
+arm-none-eabi-gcc -o "BOOTLOADER_F446RET6.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\BOOTLOADER_F446RET6\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BOOTLOADER_F446RET6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BOOTLOADER_F446RET6.elf
  
-arm-none-eabi-size  17_TIMER_INT_CMSIS.elf 
-arm-none-eabi-objdump -h -S 17_TIMER_INT_CMSIS.elf  > "17_TIMER_INT_CMSIS.list"
+arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
+arm-none-eabi-objdump -h -S BOOTLOADER_F446RET6.elf  > "BOOTLOADER_F446RET6.list"
+arm-none-eabi-objcopy  -O binary BOOTLOADER_F446RET6.elf  "BOOTLOADER_F446RET6.bin"
    text	   data	    bss	    dec	    hex	filename
-   4052	     92	   1900	   6044	   179c	17_TIMER_INT_CMSIS.elf
+  15312	    104	   2256	  17672	   4508	BOOTLOADER_F446RET6.elf
 Finished building: default.size.stdout
  
-Finished building: 17_TIMER_INT_CMSIS.list
+Finished building: BOOTLOADER_F446RET6.bin
  
-17:29:43 **** Incremental Build of configuration Debug for project 17_TIMER_INT_CMSIS ****
-make -j8 all 
-arm-none-eabi-size  17_TIMER_INT_CMSIS.elf 
-   text	   data	    bss	    dec	    hex	filename
-   4052	     92	   1900	   6044	   179c	17_TIMER_INT_CMSIS.elf
-Finished building: default.size.stdout
- 
-17:44:41 **** Incremental Build of configuration Debug for project 17_TIMER_INT_CMSIS ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/MCU_Headers/CMSIS/Include" -I"C:/Users/kjeya/Documents/STM32F446RET6_baremetal_docs/Baremetal_Firmwares/17_TIMER_INT_CMSIS/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "17_TIMER_INT_CMSIS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\17_TIMER_INT_CMSIS\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="17_TIMER_INT_CMSIS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 17_TIMER_INT_CMSIS.elf
- 
-arm-none-eabi-size  17_TIMER_INT_CMSIS.elf 
-arm-none-eabi-objdump -h -S 17_TIMER_INT_CMSIS.elf  > "17_TIMER_INT_CMSIS.list"
-   text	   data	    bss	    dec	    hex	filename
-   4024	     92	   1900	   6016	   1780	17_TIMER_INT_CMSIS.elf
-Finished building: default.size.stdout
- 
-Finished building: 17_TIMER_INT_CMSIS.list
+Finished building: BOOTLOADER_F446RET6.list
  
