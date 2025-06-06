@@ -466,7 +466,7 @@ void bootloader_handle_getver_cmd(uint8_t *bl_rx_buffer)
 	printf("bootloader handle get version command\n");
 	uint32_t command_packet_len = bl_rx_buffer[0] + 1;
 	uint32_t host_crc = *((uint32_t *) (bl_rx_buffer + command_packet_len - 4));
-	if (! bootloader_verify_crc(&bl_rx_buffer[0], command_packet_len-4, host_crc))
+	if (! booltloader_verify_crc(&bl_rx_buffer[0], command_packet_len-4, host_crc))
 	{
 		printf("checksum success !!\n");
 		bootloader_send_ack(bl_rx_buffer[0], 1);
