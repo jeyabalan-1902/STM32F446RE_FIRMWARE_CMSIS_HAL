@@ -139,8 +139,6 @@ uint8_t configure_flash_sector_rw_protection(uint8_t sector_details, uint8_t pro
 
 uint16_t read_OB_rw_protection_status(void);
 
-void bootloader_jump_to_user_app(uint32_t app_start_address);
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -223,8 +221,7 @@ int main(void)
   else
   {
 	  printf("button is not pressed...execute application code\n\r");
-	 // bootloader_jump_to_application();
-	  bootloader_jump_to_user_app(FLASH_SECTOR2_BASE_ADDRESS);
+	  bootloader_jump_to_application();
   }
   /* USER CODE END 2 */
 
@@ -468,42 +465,21 @@ void bootloader_read_uart_data(void)
 	}
 }
 
-//void bootloader_jump_to_application(void)
-//{
-//	printf("jumping to user application...\n");
-//	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08008000 + 4U)));
-//    printf("app reset handler addr:%#lx\n", app_reset_handler);
-//	  /* Reset the Clock */
-//	  HAL_RCC_DeInit();
-//	  HAL_DeInit();
-//	  __set_MSP(*(volatile uint32_t*) 0x08008000);
-//	  SysTick->CTRL = 0;
-//	  SysTick->LOAD = 0;
-//	  SysTick->VAL = 0;
-//
-//	  /* Jump to application */
-//	  app_reset_handler();
-//}
-
-void bootloader_jump_to_user_app(uint32_t app_start_address)
+void bootloader_jump_to_application(void)
 {
-    // Function pointer to the application's reset handler
-    void (*app_reset_handler)(void);
+	printf("jumping to user application...\n");
+	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08008000 + 4U)));
+    printf("app reset handler addr:%#lx\n", app_reset_handler);
+	  /* Reset the Clock */
+	  HAL_RCC_DeInit();
+	  HAL_DeInit();
+	  __set_MSP(*(volatile uint32_t*) 0x08008000);
+	  SysTick->CTRL = 0;
+	  SysTick->LOAD = 0;
+	  SysTick->VAL = 0;
 
-    // Step 1: Read the MSP value from the application start address
-    uint32_t msp_value = *(volatile uint32_t*)app_start_address;
-
-    // Step 2: Read the reset handler address
-    uint32_t reset_handler_address = *(volatile uint32_t*)(app_start_address + 4);
-
-    printf("app reset handler addr: 0x%08lx\n", reset_handler_address);
-
-    // Step 3: Set MSP to application's MSP
-    __set_MSP(msp_value);
-
-    // Step 4: Set the function pointer and jump
-    app_reset_handler = (void*) (reset_handler_address | 0x1);  // Ensure Thumb bit is set
-    app_reset_handler();
+	  /* Jump to application */
+	  app_reset_handler();
 }
 
 void bootloader_handle_read_otp(uint8_t *bl_rx_buffer)
@@ -680,11 +656,26 @@ void bootloader_handle_go_cmd(uint8_t *bl_rx_buffer)
 
 		if( verify_address(go_address) == ADDR_VALID )
 		{
+			//tell host that address is fine
 			bootloader_uart_write_data(&addr_valid,1);
-            bootloader_jump_to_user_app(go_address);
 
-		}
-		else
+			/*jump to "go" address.
+			we dont care what is being done there.
+			host must ensure that valid code is present over there
+			Its not the duty of bootloader. so just trust and jump */
+
+			/* Not doing the below line will result in hardfault exception for ARM cortex M */
+			//watch : https://www.youtube.com/watch?v=VX_12SjnNhY
+
+			go_address+=1; //make T bit =1
+
+			void (*lets_jump)(void) = (void *)go_address;
+
+			printf("BL_DEBUG_MSG: jumping to go address! \n");
+
+			lets_jump();
+
+		}else
 		{
 			printf("BL_DEBUG_MSG:GO addr invalid ! \n");
 			bootloader_uart_write_data(&addr_invalid,1);
@@ -798,7 +789,6 @@ void bootloader_send_nack(void)
 uint8_t bootloader_verify_crc(uint8_t *pData, uint32_t len, uint32_t crc_host)
 {
 	uint32_t uwCRCValue = 0xff;
-	__HAL_CRC_DR_RESET(&hcrc);
 	for (uint32_t i = 0; i < len; i++)
 	{
 		uint32_t i_data = pData[i];

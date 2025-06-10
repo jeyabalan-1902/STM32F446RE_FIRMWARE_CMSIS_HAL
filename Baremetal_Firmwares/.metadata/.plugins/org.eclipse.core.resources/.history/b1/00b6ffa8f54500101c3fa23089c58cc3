@@ -680,11 +680,27 @@ void bootloader_handle_go_cmd(uint8_t *bl_rx_buffer)
 
 		if( verify_address(go_address) == ADDR_VALID )
 		{
+			//tell host that address is fine
 			bootloader_uart_write_data(&addr_valid,1);
-            bootloader_jump_to_user_app(go_address);
 
-		}
-		else
+			/*jump to "go" address.
+			we dont care what is being done there.
+			host must ensure that valid code is present over there
+			Its not the duty of bootloader. so just trust and jump */
+
+			/* Not doing the below line will result in hardfault exception for ARM cortex M */
+			//watch : https://www.youtube.com/watch?v=VX_12SjnNhY
+            bootloader_jump_to_user_app(go_address);
+//			go_address+=1; //make T bit =1
+//			//void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08008000 + 4U)));
+//
+//			void (*lets_jump)(void) = (void *)go_address;
+//
+//			printf("BL_DEBUG_MSG: jumping to go address! \n");
+//
+//			lets_jump();
+
+		}else
 		{
 			printf("BL_DEBUG_MSG:GO addr invalid ! \n");
 			bootloader_uart_write_data(&addr_invalid,1);
@@ -798,7 +814,6 @@ void bootloader_send_nack(void)
 uint8_t bootloader_verify_crc(uint8_t *pData, uint32_t len, uint32_t crc_host)
 {
 	uint32_t uwCRCValue = 0xff;
-	__HAL_CRC_DR_RESET(&hcrc);
 	for (uint32_t i = 0; i < len; i++)
 	{
 		uint32_t i_data = pData[i];

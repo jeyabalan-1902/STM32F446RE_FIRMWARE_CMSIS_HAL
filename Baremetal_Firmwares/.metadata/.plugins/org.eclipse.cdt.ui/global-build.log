@@ -1,13 +1,13 @@
-13:00:20 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+16:57:18 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'flash_testing':
-../Core/Src/main.c:150:17: warning: unused variable 'protection_mode' [-Wunused-variable]
-  150 |         uint8_t protection_mode =2 ;
+../Core/Src/main.c:152:17: warning: unused variable 'protection_mode' [-Wunused-variable]
+  152 |         uint8_t protection_mode =2 ;
       |                 ^~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'bootloader_read_uart_data':
-../Core/Src/main.c:423:43: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
-  423 |                 HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
+../Core/Src/main.c:426:43: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+  426 |                 HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
       |                                           ^~~~~~~~~~~~~
       |                                           |
       |                                           uint8_t (*)[200] {aka unsigned char (*)[200]}
@@ -18,30 +18,20 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:746:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t (*)[200]' {aka 'unsigned char (*)[200]'}
   746 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
       |                                                               ~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'bootloader_jump_to_application':
-../Core/Src/main.c:472:39: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'void (*)(void)' [-Wformat=]
-  472 |     printf("app reset handler addr:%#lx\n", app_reset_handler);
-      |                                    ~~~^     ~~~~~~~~~~~~~~~~~
-      |                                       |     |
-      |                                       |     void (*)(void)
-      |                                       long unsigned int
 ../Core/Src/main.c: In function 'bootloader_handle_mem_write_cmd':
-../Core/Src/main.c:586:61: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  586 |                 printf("BL_DEBUG_MSG: mem write address : %#x\n",mem_address);
+../Core/Src/main.c:609:61: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  609 |                 printf("BL_DEBUG_MSG: mem write address : %#x\n",mem_address);
       |                                                           ~~^    ~~~~~~~~~~~
       |                                                             |    |
       |                                                             |    uint32_t {aka long unsigned int}
       |                                                             unsigned int
       |                                                           %#lx
-../Core/Src/main.c:570:17: warning: variable 'chksum' set but not used [-Wunused-but-set-variable]
-  570 |         uint8_t chksum =0, len=0;
+../Core/Src/main.c:593:17: warning: variable 'chksum' set but not used [-Wunused-but-set-variable]
+  593 |         uint8_t chksum =0, len=0;
       |                 ^~~~~~
-../Core/Src/main.c:568:17: warning: unused variable 'addr_valid' [-Wunused-variable]
-  568 |         uint8_t addr_valid = ADDR_VALID;
-      |                 ^~~~~~~~~~
 ../Core/Src/main.c: In function 'bootloader_handle_go_cmd':
-../Core/Src/main.c:656:49: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  656 |                 printf("BL_DEBUG_MSG:GO addr: %#x\n",go_address);
+../Core/Src/main.c:679:49: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  679 |                 printf("BL_DEBUG_MSG:GO addr: %#x\n",go_address);
       |                                               ~~^    ~~~~~~~~~~
       |                                                 |    |
       |                                                 |    uint32_t {aka long unsigned int}
@@ -54,23 +44,44 @@ arm-none-eabi-size  BOOTLOADER_F446RET6.elf
 arm-none-eabi-objdump -h -S BOOTLOADER_F446RET6.elf  > "BOOTLOADER_F446RET6.list"
 arm-none-eabi-objcopy  -O binary BOOTLOADER_F446RET6.elf  "BOOTLOADER_F446RET6.bin"
    text	   data	    bss	    dec	    hex	filename
-  20556	    112	   2288	  22956	   59ac	BOOTLOADER_F446RET6.elf
+  19836	    112	   2288	  22236	   56dc	BOOTLOADER_F446RET6.elf
 Finished building: default.size.stdout
  
 Finished building: BOOTLOADER_F446RET6.bin
  
 Finished building: BOOTLOADER_F446RET6.list
  
-14:11:00 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+16:57:22 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+make -j8 all 
+arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19836	    112	   2288	  22236	   56dc	BOOTLOADER_F446RET6.elf
+Finished building: default.size.stdout
+ 
+17:30:37 **** Build of configuration Debug for project APPLICATION_F446RET6 ****
+make -j8 all 
+arm-none-eabi-size  APPLICATION_F446RET6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11544	    104	   1976	  13624	   3538	APPLICATION_F446RET6.elf
+Finished building: default.size.stdout
+ 
+17:31:58 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+make -j8 all 
+arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19836	    112	   2288	  22236	   56dc	BOOTLOADER_F446RET6.elf
+Finished building: default.size.stdout
+ 
+17:53:25 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'flash_testing':
-../Core/Src/main.c:150:17: warning: unused variable 'protection_mode' [-Wunused-variable]
-  150 |         uint8_t protection_mode =2 ;
+../Core/Src/main.c:152:17: warning: unused variable 'protection_mode' [-Wunused-variable]
+  152 |         uint8_t protection_mode =2 ;
       |                 ^~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'bootloader_read_uart_data':
-../Core/Src/main.c:423:43: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
-  423 |                 HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
+../Core/Src/main.c:426:43: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+  426 |                 HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
       |                                           ^~~~~~~~~~~~~
       |                                           |
       |                                           uint8_t (*)[200] {aka unsigned char (*)[200]}
@@ -81,27 +92,20 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:746:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t (*)[200]' {aka 'unsigned char (*)[200]'}
   746 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
       |                                                               ~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'bootloader_jump_to_application':
-../Core/Src/main.c:472:39: warning: format '%lx' expects argument of type 'long unsigned int', but argument 2 has type 'void (*)(void)' [-Wformat=]
-  472 |     printf("app reset handler addr:%#lx\n", app_reset_handler);
-      |                                    ~~~^     ~~~~~~~~~~~~~~~~~
-      |                                       |     |
-      |                                       |     void (*)(void)
-      |                                       long unsigned int
 ../Core/Src/main.c: In function 'bootloader_handle_mem_write_cmd':
-../Core/Src/main.c:585:61: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  585 |                 printf("BL_DEBUG_MSG: mem write address : %#x\n",mem_address);
+../Core/Src/main.c:609:61: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  609 |                 printf("BL_DEBUG_MSG: mem write address : %#x\n",mem_address);
       |                                                           ~~^    ~~~~~~~~~~~
       |                                                             |    |
       |                                                             |    uint32_t {aka long unsigned int}
       |                                                             unsigned int
       |                                                           %#lx
-../Core/Src/main.c:569:17: warning: variable 'chksum' set but not used [-Wunused-but-set-variable]
-  569 |         uint8_t chksum =0, len=0;
+../Core/Src/main.c:593:17: warning: variable 'chksum' set but not used [-Wunused-but-set-variable]
+  593 |         uint8_t chksum =0, len=0;
       |                 ^~~~~~
 ../Core/Src/main.c: In function 'bootloader_handle_go_cmd':
-../Core/Src/main.c:655:49: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  655 |                 printf("BL_DEBUG_MSG:GO addr: %#x\n",go_address);
+../Core/Src/main.c:679:49: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  679 |                 printf("BL_DEBUG_MSG:GO addr: %#x\n",go_address);
       |                                               ~~^    ~~~~~~~~~~
       |                                                 |    |
       |                                                 |    uint32_t {aka long unsigned int}
@@ -114,7 +118,7 @@ arm-none-eabi-size  BOOTLOADER_F446RET6.elf
 arm-none-eabi-objdump -h -S BOOTLOADER_F446RET6.elf  > "BOOTLOADER_F446RET6.list"
 arm-none-eabi-objcopy  -O binary BOOTLOADER_F446RET6.elf  "BOOTLOADER_F446RET6.bin"
    text	   data	    bss	    dec	    hex	filename
-  20552	    112	   2288	  22952	   59a8	BOOTLOADER_F446RET6.elf
+  19852	    112	   2288	  22252	   56ec	BOOTLOADER_F446RET6.elf
 Finished building: default.size.stdout
  
 Finished building: BOOTLOADER_F446RET6.bin
