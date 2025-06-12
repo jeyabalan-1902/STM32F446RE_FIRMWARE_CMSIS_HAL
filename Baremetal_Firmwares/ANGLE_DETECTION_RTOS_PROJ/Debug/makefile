@@ -55,6 +55,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 ANGLE_DETECTION_RTOS_PROJ.list \
 
+OBJCOPY_BIN += \
+ANGLE_DETECTION_RTOS_PROJ.bin \
+
 
 # All Target
 all: main-build
@@ -78,12 +81,17 @@ ANGLE_DETECTION_RTOS_PROJ.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_
 	@echo 'Finished building: $@'
 	@echo ' '
 
+ANGLE_DETECTION_RTOS_PROJ.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "ANGLE_DETECTION_RTOS_PROJ.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) ANGLE_DETECTION_RTOS_PROJ.elf ANGLE_DETECTION_RTOS_PROJ.list ANGLE_DETECTION_RTOS_PROJ.map default.size.stdout
+	-$(RM) ANGLE_DETECTION_RTOS_PROJ.bin ANGLE_DETECTION_RTOS_PROJ.elf ANGLE_DETECTION_RTOS_PROJ.list ANGLE_DETECTION_RTOS_PROJ.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

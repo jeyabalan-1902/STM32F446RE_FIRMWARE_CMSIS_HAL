@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00002af0  080081c4  080081c4  000011c4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000054  0800acb4  0800acb4  00003cb4  2**2
+  2 .rodata       00000048  0800acb4  0800acb4  00003cb4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  0800ad08  0800ad08  00004068  2**0
+  3 .ARM.extab    00000000  0800acfc  0800acfc  00004068  2**0
                   CONTENTS
-  4 .ARM          00000008  0800ad08  0800ad08  00003d08  2**2
+  4 .ARM          00000008  0800acfc  0800acfc  00003cfc  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  0800ad10  0800ad10  00004068  2**0
+  5 .preinit_array 00000000  0800ad04  0800ad04  00004068  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  0800ad10  0800ad10  00003d10  2**2
+  6 .init_array   00000004  0800ad04  0800ad04  00003d04  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  0800ad14  0800ad14  00003d14  2**2
+  7 .fini_array   00000004  0800ad08  0800ad08  00003d08  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000068  20000000  0800ad18  00004000  2**2
+  8 .data         00000068  20000000  0800ad0c  00004000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000001b8  20000068  0800ad80  00004068  2**2
+  9 .bss          000001b8  20000068  0800ad74  00004068  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000220  0800ad80  00004220  2**0
+ 10 ._user_heap_stack 00000600  20000220  0800ad74  00004220  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00004068  2**0
                   CONTENTS, READONLY
@@ -389,11 +389,11 @@ int main(void)
  800850e:	2120      	movs	r1, #32
  8008510:	4806      	ldr	r0, [pc, #24]	@ (800852c <main+0x38>)
  8008512:	f000 fd8e 	bl	8009032 <HAL_GPIO_TogglePin>
-	  printf("GPIO Toggling...with 2 sec delay\n");
+	  printf("GPIO PIN 5 LED TOGGLE..\n");
  8008516:	4806      	ldr	r0, [pc, #24]	@ (8008530 <main+0x3c>)
  8008518:	f002 f82c 	bl	800a574 <puts>
-	  HAL_Delay(2000);
- 800851c:	f44f 60fa 	mov.w	r0, #2000	@ 0x7d0
+	  HAL_Delay(1000);
+ 800851c:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
  8008520:	f000 fad0 	bl	8008ac4 <HAL_Delay>
 	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
  8008524:	bf00      	nop
@@ -1399,7 +1399,7 @@ LoopFillZerobss:
   ldr r1, =_edata
  80089cc:	20000068 	.word	0x20000068
   ldr r2, =_sidata
- 80089d0:	0800ad18 	.word	0x0800ad18
+ 80089d0:	0800ad0c 	.word	0x0800ad0c
   ldr r2, =_sbss
  80089d4:	20000068 	.word	0x20000068
   ldr r4, =_ebss
@@ -2876,7 +2876,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(const RCC_ClkInitTypeDef  *RCC_ClkInitStru
  800921e:	bf00      	nop
  8009220:	40023c00 	.word	0x40023c00
  8009224:	40023800 	.word	0x40023800
- 8009228:	0800acf0 	.word	0x0800acf0
+ 8009228:	0800ace4 	.word	0x0800ace4
  800922c:	20000000 	.word	0x20000000
  8009230:	20000004 	.word	0x20000004
 
@@ -2924,7 +2924,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8009268:	4618      	mov	r0, r3
  800926a:	bd80      	pop	{r7, pc}
  800926c:	40023800 	.word	0x40023800
- 8009270:	0800ad00 	.word	0x0800ad00
+ 8009270:	0800acf4 	.word	0x0800acf4
 
 08009274 <HAL_RCC_GetPCLK2Freq>:
   * @note   Each time PCLK2 changes, this function must be called to update the
@@ -2950,7 +2950,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  8009290:	4618      	mov	r0, r3
  8009292:	bd80      	pop	{r7, pc}
  8009294:	40023800 	.word	0x40023800
- 8009298:	0800ad00 	.word	0x0800ad00
+ 8009298:	0800acf4 	.word	0x0800acf4
 
 0800929c <HAL_RCC_GetSysClockFreq>:
   *
@@ -5925,10 +5925,10 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
  800a80e:	4798      	blx	r3
  800a810:	3601      	adds	r6, #1
  800a812:	e7f2      	b.n	800a7fa <__libc_init_array+0x1e>
- 800a814:	0800ad10 	.word	0x0800ad10
- 800a818:	0800ad10 	.word	0x0800ad10
- 800a81c:	0800ad10 	.word	0x0800ad10
- 800a820:	0800ad14 	.word	0x0800ad14
+ 800a814:	0800ad04 	.word	0x0800ad04
+ 800a818:	0800ad04 	.word	0x0800ad04
+ 800a81c:	0800ad04 	.word	0x0800ad04
+ 800a820:	0800ad08 	.word	0x0800ad08
 
 0800a824 <__retarget_lock_init_recursive>:
  800a824:	4770      	bx	lr
