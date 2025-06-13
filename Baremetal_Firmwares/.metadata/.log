@@ -437,3 +437,36 @@ Caused by: java.nio.channels.UnresolvedAddressException
 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
 	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:185)
 	... 21 more
+!SESSION 2025-06-12 23:04:23.334 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-12 23:05:19.969
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-12 23:05:19.997
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-12 23:05:37.462
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-06-12 23:08:58.685
+!MESSAGE Indexed 'OTA_BOOTLOADER_F446RET6' (24 sources, 128 headers) in 8.46 sec: 12,717 declarations; 47,927 references; 9 unresolved inclusions; 1,112 syntax errors; 1,469 unresolved names (2.4%)
+!SESSION 2025-06-13 10:11:29.452 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-13 10:12:00.459
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-13 10:12:00.465
+!MESSAGE Log4j2 initialized with config file C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-13 10:12:12.478
+!MESSAGE Started RMI Server, listening on port 41337

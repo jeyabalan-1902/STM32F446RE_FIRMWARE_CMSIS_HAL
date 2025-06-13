@@ -1,24 +1,7 @@
-11:47:38 **** Incremental Build of configuration Debug for project APPLICATION_F446RET6 ****
+17:26:17 **** Incremental Build of configuration Debug for project OTA_BOOTLOADER_F446RET6 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "APPLICATION_F446RET6.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="APPLICATION_F446RET6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: APPLICATION_F446RET6.elf
- 
-arm-none-eabi-size  APPLICATION_F446RET6.elf 
-arm-none-eabi-objdump -h -S APPLICATION_F446RET6.elf  > "APPLICATION_F446RET6.list"
-arm-none-eabi-objcopy  -O binary APPLICATION_F446RET6.elf  "APPLICATION_F446RET6.bin"
+arm-none-eabi-size  OTA_BOOTLOADER_F446RET6.elf 
    text	   data	    bss	    dec	    hex	filename
-  11532	    104	   1976	  13612	   352c	APPLICATION_F446RET6.elf
-Finished building: default.size.stdout
- 
-Finished building: APPLICATION_F446RET6.bin
- 
-Finished building: APPLICATION_F446RET6.list
- 
-12:34:01 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
-make -j8 all 
-arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19852	    112	   2288	  22252	   56ec	BOOTLOADER_F446RET6.elf
+  20348	    112	   2288	  22748	   58dc	OTA_BOOTLOADER_F446RET6.elf
 Finished building: default.size.stdout
  

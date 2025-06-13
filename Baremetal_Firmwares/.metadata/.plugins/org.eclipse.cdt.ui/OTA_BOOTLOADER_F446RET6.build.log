@@ -1,0 +1,10 @@
+17:26:17 **** Incremental Build of configuration Debug for project OTA_BOOTLOADER_F446RET6 ****
+make -j8 all 
+arm-none-eabi-size  OTA_BOOTLOADER_F446RET6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  20348	    112	   2288	  22748	   58dc	OTA_BOOTLOADER_F446RET6.elf
+Finished building: default.size.stdout
+ 
+
+17:26:17 Build Finished. 0 errors, 0 warnings. (took 348ms)
+

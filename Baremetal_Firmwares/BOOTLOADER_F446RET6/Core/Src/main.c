@@ -146,39 +146,6 @@ void bootloader_jump_to_user_app(uint32_t app_start_address);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-void flash_testing(void)
-{
-
-	uint8_t protection_mode =2 ;
-	uint8_t sector_details = 0x80;
-
-	//Flash option control register (OPTCR)
-	volatile uint32_t *pOPTCR = (uint32_t*) 0x40023C14;
-
-	  			//Option byte configuration unlock
-			HAL_FLASH_OB_Unlock();
-
-			//wait till no active operation on flash
-			while(__HAL_FLASH_GET_FLAG(FLASH_FLAG_BSY) != RESET);
-
-			//here wer are setting read and write protection for the sectors
-			//set the 31st bit
-			//please refer : Flash option control register (FLASH_OPTCR) in RM
-			*pOPTCR |= (1 << 31);
-
-			//put write protection on sectors
-	    *pOPTCR &= ~(0xff << 16);
-			*pOPTCR |= (sector_details << 16);
-
-			//Set the option start bit (OPTSTRT) in the FLASH_OPTCR register
-			*pOPTCR |= ( 1 << 1);
-
-			//wait till no active operation on flash
-			while(__HAL_FLASH_GET_FLAG(FLASH_FLAG_BSY) != RESET);
-
-			HAL_FLASH_OB_Lock();
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -467,23 +434,6 @@ void bootloader_read_uart_data(void)
 		}
 	}
 }
-
-//void bootloader_jump_to_application(void)
-//{
-//	printf("jumping to user application...\n");
-//	void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*) (0x08008000 + 4U)));
-//    printf("app reset handler addr:%#lx\n", app_reset_handler);
-//	  /* Reset the Clock */
-//	  HAL_RCC_DeInit();
-//	  HAL_DeInit();
-//	  __set_MSP(*(volatile uint32_t*) 0x08008000);
-//	  SysTick->CTRL = 0;
-//	  SysTick->LOAD = 0;
-//	  SysTick->VAL = 0;
-//
-//	  /* Jump to application */
-//	  app_reset_handler();
-//}
 
 void bootloader_jump_to_user_app(uint32_t app_start_address)
 {

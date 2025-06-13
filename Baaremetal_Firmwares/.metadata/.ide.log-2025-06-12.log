@@ -1,0 +1,39 @@
+2025-06-13 00:05:42,683 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,450x253,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2025-06-13 00:05:44,493 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2025-06-13 00:05:58,310 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 679055248 Bytes (1073741824)
+2025-06-13 00:06:02,080 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 743877024 Bytes (1073741824)
+2025-06-13 00:06:03,328 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: SYS
+2025-06-13 00:06:03,330 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: RCC
+2025-06-13 00:06:03,330 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: NVIC
+2025-06-13 00:06:03,330 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: USART
+2025-06-13 00:06:03,330 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: USART
+2025-06-13 00:06:03,331 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: GPIO
+2025-06-13 00:06:03,342 [INFO] CodeGenerator:807 - code generatio: config db path: C:\ST\STM32CubeIDE_1.16.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.12.1.202409122256\\db\
+2025-06-13 00:06:03,929 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\MXTmpFiles\license.tmp_save
+2025-06-13 00:06:04,910 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\MXTmpFiles\license.tmp
+2025-06-13 00:06:05,097 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\MXTmpFiles\gpio.tmp_save
+2025-06-13 00:06:05,505 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\MXTmpFiles\gpio.tmp
+2025-06-13 00:06:05,909 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Src\stm32f4xx_it.c_save
+2025-06-13 00:06:06,300 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Src\stm32f4xx_it.c
+2025-06-13 00:06:06,367 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Inc\stm32f4xx_it.h_save
+2025-06-13 00:06:06,612 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Inc\stm32f4xx_it.h
+2025-06-13 00:06:06,694 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Src\stm32f4xx_hal_msp.c_save
+2025-06-13 00:06:07,077 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Src\stm32f4xx_hal_msp.c
+2025-06-13 00:06:07,108 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\MXTmpFiles\system.tmp_save
+2025-06-13 00:06:07,254 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\MXTmpFiles\system.tmp
+2025-06-13 00:06:07,332 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Inc\stm32f4xx_hal_conf.h_save
+2025-06-13 00:06:07,590 [INFO] CodeEngine:335 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Inc\stm32f4xx_hal_conf.h
+2025-06-13 00:06:07,659 [WARN] IPConfigManager:3005 - Warning: the RefConfig PLL2P_FOR_MCO is not available in your config.xml file
+2025-06-13 00:06:07,747 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Inc\main.h_save
+2025-06-13 00:06:07,993 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Inc\main.h
+2025-06-13 00:06:08,048 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Src\main.c_save
+2025-06-13 00:06:08,492 [INFO] CodeEngine:279 - Generated code: C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\APPLICATION_F446RET6\Core\Src\main.c
+2025-06-13 00:06:09,456 [INFO] ProjectBuilder:3249 - Time for Copy HAL[1] : 500mS.
+2025-06-13 00:06:09,469 [INFO] ProjectBuilder:4828 - Project Generator version: 4.5.0-B34
+2025-06-13 00:06:09,768 [INFO] ConfigFileManager:1531 - The Die is : DIE421
+2025-06-13 00:06:09,819 [INFO] ApiDbMcu:508 - Load IP Config File for FATFS
+2025-06-13 00:06:09,855 [INFO] ApiDbMcu:508 - Load IP Config File for FREERTOS
+2025-06-13 00:06:09,884 [INFO] ApiDbMcu:508 - Load IP Config File for LIBJPEG
+2025-06-13 00:06:09,921 [INFO] ApiDbMcu:508 - Load IP Config File for MBEDTLS
+2025-06-13 00:06:09,954 [INFO] ApiDbMcu:508 - Load IP Config File for USB_DEVICE
+2025-06-13 00:06:09,979 [INFO] ApiDbMcu:508 - Load IP Config File for USB_HOST
