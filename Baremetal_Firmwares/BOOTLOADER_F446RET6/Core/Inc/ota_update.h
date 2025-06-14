@@ -1,154 +1,98 @@
 /*
  * ota_update.h
  *
- *  Created on: May 31, 2025
+ *  Created on: June 10, 2025
  *      Author: kjeyabalan
  */
 
 #ifndef INC_OTA_UPDATE_H_
 #define INC_OTA_UPDATE_H_
 
+#include <stdio.h>
 #include <stdint.h>
+#include <stdarg.h>
+#include <string.h>
+#include "main.h"
 
-#define ETX_OTA_SOF  0xAA    // Start of Frame
-#define ETX_OTA_EOF  0xBB    // End of Frame
-#define ETX_OTA_ACK  0x00    // ACK
-#define ETX_OTA_NACK 0x01    // NACK
 
-#define ETX_APP_FLASH_ADDR 0x08040000   //Application's Flash Address
+#define BL_GET_VER            0x51
+#define BL_GET_HELP           0x52
+#define BL_GET_CID            0x53
+#define BL_GET_RDP_STATUS     0x54
+#define BL_GO_TO_ADDR         0x55
+#define BL_FLASH_ERASE        0x56
+#define BL_MEM_WRITE          0x57
+#define BL_EN_RW_PROTECT      0x58
+#define BL_MEM_READ           0x59
+#define BL_READ_SECTOR_STATUS 0x5A
+#define BL_OTP_READ           0x5B
+#define BL_DIS_R_W_PROTECT    0x5C
 
-#define ETX_OTA_DATA_MAX_SIZE ( 1024 )  //Maximum data Size
-#define ETX_OTA_DATA_OVERHEAD (    9 )  //data overhead
-#define ETX_OTA_PACKET_MAX_SIZE ( ETX_OTA_DATA_MAX_SIZE + ETX_OTA_DATA_OVERHEAD )
+#define BL_RX_LEN             200
 
-/*
- * Exception codes
- */
-typedef enum
-{
-  ETX_OTA_EX_OK       = 0,    // Success
-  ETX_OTA_EX_ERR      = 1,    // Failure
-}ETX_OTA_EX_;
+#define BL_ACK                0xA5
+#define BL_NACK               0x7F
 
-/*
- * OTA process state
- */
-typedef enum
-{
-  ETX_OTA_STATE_IDLE    = 0,
-  ETX_OTA_STATE_START   = 1,
-  ETX_OTA_STATE_HEADER  = 2,
-  ETX_OTA_STATE_DATA    = 3,
-  ETX_OTA_STATE_END     = 4,
-}ETX_OTA_STATE_;
+#define VERIFY_CRC_FAIL       1
+#define VERIFY_CRC_SUCCESS    0
 
-/*
- * Packet type
- */
-typedef enum
-{
-  ETX_OTA_PACKET_TYPE_CMD       = 0,    // Command
-  ETX_OTA_PACKET_TYPE_DATA      = 1,    // Data
-  ETX_OTA_PACKET_TYPE_HEADER    = 2,    // Header
-  ETX_OTA_PACKET_TYPE_RESPONSE  = 3,    // Response
-}ETX_OTA_PACKET_TYPE_;
+#define BL_VERSION            0x10   //version 1.0
 
-/*
- * OTA Commands
- */
-typedef enum
-{
-  ETX_OTA_CMD_START = 0,    // OTA Start command
-  ETX_OTA_CMD_END   = 1,    // OTA End command
-  ETX_OTA_CMD_ABORT = 2,    // OTA Abort command
-}ETX_OTA_CMD_;
+#define FLASH_SECTOR2_BASE_ADDRESS 0x08008000U
 
-/*
- * OTA meta info
- */
-typedef struct
-{
-  uint32_t package_size;
-  uint32_t package_crc;
-  uint32_t reserved1;
-  uint32_t reserved2;
-}__attribute__((packed)) meta_info;
+#define ADDR_VALID 0x00
+#define ADDR_INVALID 0x01
 
-/*
- * OTA Command format
- *
- * ________________________________________
- * |     | Packet |     |     |     |     |
- * | SOF | Type   | Len | CMD | CRC | EOF |
- * |_____|________|_____|_____|_____|_____|
- *   1B      1B     2B    1B     4B    1B
- */
-typedef struct
-{
-  uint8_t   sof;
-  uint8_t   packet_type;
-  uint16_t  data_len;
-  uint8_t   cmd;
-  uint32_t  crc;
-  uint8_t   eof;
-}__attribute__((packed)) ETX_OTA_COMMAND_;
+#define INVALID_SECTOR 0x04
 
-/*
- * OTA Header format
- *
- * __________________________________________
- * |     | Packet |     | Header |     |     |
- * | SOF | Type   | Len |  Data  | CRC | EOF |
- * |_____|________|_____|________|_____|_____|
- *   1B      1B     2B     16B     4B    1B
- */
-typedef struct
-{
-  uint8_t     sof;
-  uint8_t     packet_type;
-  uint16_t    data_len;
-  meta_info   meta_data;
-  uint32_t    crc;
-  uint8_t     eof;
-}__attribute__((packed)) ETX_OTA_HEADER_;
+#define BOOT_CMD    0x50
 
-/*
- * OTA Data format
- *
- * __________________________________________
- * |     | Packet |     |        |     |     |
- * | SOF | Type   | Len |  Data  | CRC | EOF |
- * |_____|________|_____|________|_____|_____|
- *   1B      1B     2B    nBytes   4B    1B
- */
-typedef struct
-{
-  uint8_t     sof;
-  uint8_t     packet_type;
-  uint16_t    data_len;
-  uint8_t     *data;
-}__attribute__((packed)) ETX_OTA_DATA_;
+#define UART_TIMEOUT_MS   3000
 
-/*
- * OTA Response format
- *
- * __________________________________________
- * |     | Packet |     |        |     |     |
- * | SOF | Type   | Len | Status | CRC | EOF |
- * |_____|________|_____|________|_____|_____|
- *   1B      1B     2B      1B     4B    1B
- */
-typedef struct
-{
-  uint8_t   sof;
-  uint8_t   packet_type;
-  uint16_t  data_len;
-  uint8_t   status;
-  uint32_t  crc;
-  uint8_t   eof;
-}__attribute__((packed)) ETX_OTA_RESP_;
+#define SRAM1_SIZE            112*1024     // STM32F446RE has 112KB of SRAM1
+#define SRAM1_END             (SRAM1_BASE + SRAM1_SIZE)
+#define SRAM2_SIZE            16*1024     // STM32F446RE has 16KB of SRAM2
+#define SRAM2_END             (SRAM2_BASE + SRAM2_SIZE)
+#define FLASH_SIZE             512*1024     // STM32F446RE has 512KB of SRAM2
+#define BKPSRAM_SIZE           4*1024     // STM32F446RE has 4KB of SRAM2
+#define BKPSRAM_END            (BKPSRAM_BASE + BKPSRAM_SIZE)
 
-ETX_OTA_EX_ etx_ota_download_and_flash( void );
 
+extern CRC_HandleTypeDef hcrc;
+extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
+
+void bootloader_jump_to_application(void);
+void bootloader_read_uart_data(void);
+void bootloader_handle_read_otp(uint8_t *bl_rx_buffer);
+void bootloader_handle_read_sector_status(uint8_t *bl_rx_buffer);
+void bootloader_handle_mem_read(uint8_t *bl_rx_buffer);
+void bootloader_handle_dis_rw_protect(uint8_t *bl_rx_buffer);
+void bootloader_handle_endis_rw_protect(uint8_t *bl_rx_buffer);
+void bootloader_handle_mem_write_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_flash_erase_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_go_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_getrdp_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_getcid_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_gethelp_cmd(uint8_t *bl_rx_buffer);
+void bootloader_handle_getver_cmd(uint8_t *bl_rx_buffer);
+void bootloader_send_ack(uint8_t command_code, uint8_t follow_len);
+void bootloader_send_nack(void);
+uint8_t bootloader_verify_crc(uint8_t *pData, uint32_t len, uint32_t crc_host);
+void bootloader_uart_write_data(uint8_t *pBuffer, uint32_t len);
+uint8_t get_bootloader_version(void);
+
+uint16_t get_mcu_chip_id(void);
+uint8_t get_flash_rdp_level(void);
+uint8_t verify_address(uint32_t go_address);
+uint8_t execute_flash_erase(uint8_t sector_number , uint8_t number_of_sector);
+uint8_t execute_mem_write(uint8_t *pBuffer, uint32_t mem_address, uint32_t len);
+
+uint8_t configure_flash_sector_rw_protection(uint8_t sector_details, uint8_t protection_mode, uint8_t disable);
+
+uint16_t read_OB_rw_protection_status(void);
+
+void bootloader_jump_to_user_app(uint32_t app_start_address);
+void jump_to_updated_application(uint32_t app_start_address);
 
 #endif /* INC_OTA_UPDATE_H_ */

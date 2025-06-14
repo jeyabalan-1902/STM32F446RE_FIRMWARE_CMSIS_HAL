@@ -1,0 +1,10 @@
+22:07:36 **** Incremental Build of configuration Debug for project KEYPAD_4x4_F103C6T6A ****
+make -j8 all 
+arm-none-eabi-size  KEYPAD_4x4_F103C6T6A.elf 
+   text	   data	    bss	    dec	    hex	filename
+   9552	    104	   1976	  11632	   2d70	KEYPAD_4x4_F103C6T6A.elf
+Finished building: default.size.stdout
+ 
+
+22:07:37 Build Finished. 0 errors, 0 warnings. (took 553ms)
+

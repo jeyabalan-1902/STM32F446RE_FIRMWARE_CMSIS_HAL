@@ -1,0 +1,16 @@
+/*
+ * ota_update.h
+ *
+ *  Created on: June 10, 2025
+ *      Author: kjeyabalan
+ */
+
+#ifndef INC_OTA_UPDATE_H_
+#define INC_OTA_UPDATE_H_
+
+#include <stdint.h>
+
+
+
+
+#endif /* INC_OTA_UPDATE_H_ */

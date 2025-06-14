@@ -33,7 +33,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define BOOT_CMD          0x50
-#define BOOT_BASE_ADDRESS 0x08040000U
+#define BOOT_BASE_ADDRESS 0x08000000U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -134,8 +134,8 @@ int main(void)
   while (1)
   {
 	  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-	  printf("GPIO PIN 5 LED TOGGLE WITH 1 SEC DELAY..\n");
-	  HAL_Delay(1000);
+	  printf("GPIO PIN 5 LED TOGGLE WITH 2 SEC DELAY..\n");
+	  HAL_Delay(2000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
