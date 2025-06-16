@@ -20,6 +20,8 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:APPLICATION_F446RET6\ Debug/act
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:APPLICATION_F446RET6\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BOOTLOADER_F446RET6/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BOOTLOADER_F446RET6/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Bootloader\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:MPU6050_F401RE_GP\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:MPU6050_F401RE_GP\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TEST_APP_F446RET6/activeLaunchMode=run

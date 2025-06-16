@@ -70,7 +70,7 @@ void bootloader_main(void)
 
 	if (status == HAL_OK && rx_byte == BOOT_CMD)
 	{
-		printf("BOOT_CMD (0x50) received...entering bootloader mode\n\r");
+		printf("BOOT_CMD received...entering bootloader mode\n\r");
 		bootloader_read_uart_data();
 	}
 	else
@@ -122,6 +122,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
+  printf("Bootloader running.....\n");
   bootloader_main();
   /* USER CODE END 2 */
 

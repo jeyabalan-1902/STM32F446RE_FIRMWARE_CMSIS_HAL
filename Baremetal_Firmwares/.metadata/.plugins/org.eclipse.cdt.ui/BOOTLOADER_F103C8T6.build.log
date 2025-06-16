@@ -1,0 +1,40 @@
+16:16:38 **** Incremental Build of configuration Debug for project BOOTLOADER_F103C8T6 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:25:
+../Core/Inc/ota_update.h:46: warning: "FLASH_BASE" redefined
+   46 | #define FLASH_BASE            0x08000000U
+      | 
+In file included from ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:130,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:572: note: this is the location of the previous definition
+  572 | #define FLASH_BASE            0x08000000UL /*!< FLASH base address in the alias region */
+      | 
+../Core/Inc/ota_update.h:48: warning: "SRAM_BASE" redefined
+   48 | #define SRAM_BASE             0x20000000U
+      | 
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:574: note: this is the location of the previous definition
+  574 | #define SRAM_BASE             0x20000000UL /*!< SRAM base address in the alias region */
+      | 
+arm-none-eabi-gcc -o "BOOTLOADER_F103C8T6.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\BOOTLOADER_F103C8T6\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BOOTLOADER_F103C8T6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BOOTLOADER_F103C8T6.elf
+ 
+arm-none-eabi-size  BOOTLOADER_F103C8T6.elf 
+arm-none-eabi-objdump -h -S BOOTLOADER_F103C8T6.elf  > "BOOTLOADER_F103C8T6.list"
+arm-none-eabi-objcopy  -O binary BOOTLOADER_F103C8T6.elf  "BOOTLOADER_F103C8T6.bin"
+   text	   data	    bss	    dec	    hex	filename
+   5728	     12	   1724	   7464	   1d28	BOOTLOADER_F103C8T6.elf
+Finished building: default.size.stdout
+ 
+Finished building: BOOTLOADER_F103C8T6.bin
+ 
+Finished building: BOOTLOADER_F103C8T6.list
+ 
+
+16:16:40 Build Finished. 0 errors, 2 warnings. (took 1s.287ms)
+

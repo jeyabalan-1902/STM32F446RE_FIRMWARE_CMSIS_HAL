@@ -77,6 +77,7 @@ void bootloader_jump_to_user_app(uint32_t app_start_address)
     uint32_t reset_handler_address = *(volatile uint32_t*)(app_start_address + 4);
 
     printf("app reset handler addr: 0x%08lx\n", reset_handler_address);
+    SCB->VTOR = app_start_address;
     __set_MSP(msp_value);
     app_reset_handler = (void*) (reset_handler_address | 0x1);  // Ensure Thumb bit is set
     app_reset_handler();

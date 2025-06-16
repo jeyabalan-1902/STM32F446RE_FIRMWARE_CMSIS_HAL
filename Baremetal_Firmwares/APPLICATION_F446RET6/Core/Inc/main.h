@@ -59,6 +59,22 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_Pin GPIO_PIN_5
 #define LED_GPIO_Port GPIOA
+#define KEYPAD_R1_Pin GPIO_PIN_0
+#define KEYPAD_R1_GPIO_Port GPIOB
+#define KEYPAD_R2_Pin GPIO_PIN_1
+#define KEYPAD_R2_GPIO_Port GPIOB
+#define KEYPAD_R3_Pin GPIO_PIN_2
+#define KEYPAD_R3_GPIO_Port GPIOB
+#define KEYPAD_R4_Pin GPIO_PIN_3
+#define KEYPAD_R4_GPIO_Port GPIOB
+#define KEYPAD_C1_Pin GPIO_PIN_4
+#define KEYPAD_C1_GPIO_Port GPIOB
+#define KEYPAD_C2_Pin GPIO_PIN_5
+#define KEYPAD_C2_GPIO_Port GPIOB
+#define KEYPAD_C3_Pin GPIO_PIN_6
+#define KEYPAD_C3_GPIO_Port GPIOB
+#define KEYPAD_C4_Pin GPIO_PIN_7
+#define KEYPAD_C4_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
