@@ -9,6 +9,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\TUT_ST7735_F4"/>
+			<item value="C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\TUT_TFT1.8_MENU_F446"/>
 			<item value="C:\Users\kjeya\Downloads\STM32F103C8T6-Bootloader-2 (1)\STM32F103C8T6-Bootloader-2\Application"/>
 			<item value="C:\Users\kjeya\Downloads\STM32F103C8T6-Bootloader-2 (1)\STM32F103C8T6-Bootloader-2\Bootloader"/>
 			<item value="C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\Keypad_F103"/>

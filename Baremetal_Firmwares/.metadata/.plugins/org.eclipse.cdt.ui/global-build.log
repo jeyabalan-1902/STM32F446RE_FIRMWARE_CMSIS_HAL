@@ -1,54 +1,25 @@
-23:18:50 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+14:31:16 **** Incremental Build of configuration Debug for project APPLICATION_F446RET6 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/ota_update.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/ota_update.d" -MT"Core/Src/ota_update.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ota_update.o"
-../Core/Src/ota_update.c: In function 'bootloader_read_uart_data':
-../Core/Src/ota_update.c:29:43: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
-   29 |                 HAL_UART_Receive(&huart3, &bl_rx_buffer, 1, HAL_MAX_DELAY);
-      |                                           ^~~~~~~~~~~~~
-      |                                           |
-      |                                           uint8_t (*)[200] {aka unsigned char (*)[200]}
-In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
-                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Inc/ota_update.h:15,
-                 from ../Core/Src/ota_update.c:8:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:746:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t (*)[200]' {aka 'unsigned char (*)[200]'}
-  746 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                               ~~~~~~~~~^~~~~
-../Core/Src/ota_update.c: In function 'bootloader_handle_mem_write_cmd':
-../Core/Src/ota_update.c:210:61: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  210 |                 printf("BL_DEBUG_MSG: mem write address : %#x\n",mem_address);
-      |                                                           ~~^    ~~~~~~~~~~~
-      |                                                             |    |
-      |                                                             |    uint32_t {aka long unsigned int}
-      |                                                             unsigned int
-      |                                                           %#lx
-../Core/Src/ota_update.c:194:17: warning: variable 'chksum' set but not used [-Wunused-but-set-variable]
-  194 |         uint8_t chksum =0, len=0;
-      |                 ^~~~~~
-../Core/Src/ota_update.c: In function 'bootloader_handle_go_cmd':
-../Core/Src/ota_update.c:280:49: warning: format '%x' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  280 |                 printf("BL_DEBUG_MSG:GO addr: %#x\n",go_address);
-      |                                               ~~^    ~~~~~~~~~~
-      |                                                 |    |
-      |                                                 |    uint32_t {aka long unsigned int}
-      |                                                 unsigned int
-      |                                               %#lx
-arm-none-eabi-gcc -o "BOOTLOADER_F446RET6.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\kjeya\Documents\STM32F446RET6_baremetal_docs\Baremetal_Firmwares\BOOTLOADER_F446RET6\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BOOTLOADER_F446RET6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: BOOTLOADER_F446RET6.elf
+arm-none-eabi-size  APPLICATION_F446RET6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25544	    160	   2224	  27928	   6d18	APPLICATION_F446RET6.elf
+Finished building: default.size.stdout
  
+14:31:38 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+make -j8 all 
 arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
-arm-none-eabi-objdump -h -S BOOTLOADER_F446RET6.elf  > "BOOTLOADER_F446RET6.list"
-arm-none-eabi-objcopy  -O binary BOOTLOADER_F446RET6.elf  "BOOTLOADER_F446RET6.bin"
    text	   data	    bss	    dec	    hex	filename
   20604	    112	   2288	  23004	   59dc	BOOTLOADER_F446RET6.elf
 Finished building: default.size.stdout
  
-Finished building: BOOTLOADER_F446RET6.bin
+14:43:11 **** Incremental Build of configuration Debug for project APPLICATION_F446RET6 ****
+make -j8 all 
+arm-none-eabi-size  APPLICATION_F446RET6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25544	    160	   2224	  27928	   6d18	APPLICATION_F446RET6.elf
+Finished building: default.size.stdout
  
-Finished building: BOOTLOADER_F446RET6.list
- 
-23:18:54 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
+14:44:07 **** Incremental Build of configuration Debug for project BOOTLOADER_F446RET6 ****
 make -j8 all 
 arm-none-eabi-size  BOOTLOADER_F446RET6.elf 
    text	   data	    bss	    dec	    hex	filename
